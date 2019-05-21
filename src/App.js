@@ -1,24 +1,24 @@
 import React from 'react';
 
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import Button from 'react-bootstrap/Button';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Home from "./Sites/Home"
+import AppSite from "./Sites/App_Site"
+import Analytics from "./Sites/Analytics"
+
 import './App.css';
 
 function App() {
-  return (
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">Analytopia</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Watch & Analyze</Nav.Link>
-            <Nav.Link href="#link">Analytics</Nav.Link>
-          </Nav>
-            <Button variant="outline-primary">Login</Button>
-        </Navbar.Collapse>
-      </Navbar>
-  );
+  return <>
+      <Router>
+        <div>
+            <Route path="/" exact component={Home} />
+            <Route path="/app" component={AppSite} />
+            <Route path="/analytics" component={Analytics} />
+        </div>
+      </Router>
+   </>;
 }
 
 export default App;
+
+
