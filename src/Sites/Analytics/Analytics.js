@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NavigationBar from "../Components/NavigationBar.js";
+import NavigationBar from "../../Components/NavigationBar.js";
 
 function Analytics() {
     return <>

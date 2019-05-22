@@ -1,9 +1,9 @@
 import React from 'react';
-
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Home from "./Sites/Home"
-import AppSite from "./Sites/App_Site"
-import Analytics from "./Sites/Analytics"
+
+import Home from "./Sites/Home/Home"
+import AppSite from "./Sites/App_Site/App_Site"
+import Analytics from "./Sites/Analytics/Analytics"
 
 import './App.css';
 
