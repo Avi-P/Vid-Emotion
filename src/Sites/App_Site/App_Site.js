@@ -7,24 +7,72 @@ import InputGroup from "react-bootstrap/InputGroup"
 
 import "./App_Site.css"
 
-function AppSite() {
-    return <>
-        <NavigationBar />
-            <InputGroup className = "linkForm">
-                        <InputGroup.Prepend>
-                            <InputGroup.Text> youtu.be/</InputGroup.Text>
-                        </InputGroup.Prepend>
+import YTiFrame from "../../Components/YTiFrame"
 
-                        <FormControl placeholder = "YouTube Video Tag" />
+class AppSite extends React.Component {
+    constructor(props) {
+        super(props);
 
-                        <InputGroup.Append>
-                            <Button variant = "primary" size = "md" active>
-                                Go!
-                            </Button>
-                        </InputGroup.Append>
-            </InputGroup>
-    </>
+        this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.showFrameFunc = this.showFrameFunc.bind(this);
+
+        this.state = {
+            YTVideo: "",
+            showFrame: false
+        };
+    }
+
+    handleChange(event) {
+        this.setState({
+            YTVideo: event.target.value,
+            showFrame: false
+        })
+    }
+
+    handleClick() {
+        this.setState({
+            YTVideo: this.state.YTVideo,
+            showFrame: true
+        })
+    }
+
+    showFrameFunc() {
+        if (this.state.showFrame) {
+            return <div className = "YTFrame">
+                <YTiFrame videoId = {this.state.YTVideo} />
+            </div>;
+        }
+        else {
+            return <h3 className = "linkForm"> Enter a link in and lets get this party started! </h3>;
+        }
+    }
+
+    render() {
+        let frame = this.showFrameFunc();
+
+        return (
+            <div>
+                <NavigationBar/>
+                <InputGroup className="linkForm">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text> youtu.be/</InputGroup.Text>
+                    </InputGroup.Prepend>
+
+                    <FormControl placeholder="YouTube Video Tag" onChange = {this.handleChange}/>
+
+                    <InputGroup.Append>
+                        <Button variant="primary" size="md" active onClick={this.handleClick}>
+                            "Go!"
+                        </Button>
+                     </InputGroup.Append>
+                 </InputGroup>
+
+                {frame}
+
+            </div>
+        )
+    }
 }
-
 
 export default AppSite;
