@@ -19,14 +19,25 @@ class AppSite extends React.Component {
 
         this.state = {
             YTVideo: "",
-            showFrame: false
+            showFrame: false,
         };
     }
 
     handleChange(event) {
+
+        if (event.target.value === "") {
+            this.setState({
+                YTVideo: event.target.value,
+                showFrame: false
+            })
+
+            return;
+        }
+
+
         this.setState({
             YTVideo: event.target.value,
-            showFrame: false
+            showFrame: this.state.showFrame
         })
     }
 
@@ -63,7 +74,7 @@ class AppSite extends React.Component {
 
                     <InputGroup.Append>
                         <Button variant="primary" size="md" active onClick={this.handleClick}>
-                            "Go!"
+                            Go!
                         </Button>
                      </InputGroup.Append>
                  </InputGroup>
