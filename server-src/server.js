@@ -36,4 +36,41 @@ app.post('/api/register', function(req, res) {
     });
 });
 
+app.post("/api/login", function(req, res) {
+    const {username, password} = req.body;
+
+    Users.findOne({username}, function(err, user) {
+        if (err) {
+            res.status(500).json({
+                error: "Internal Error."
+            });
+        }
+        else if (!user) {
+            res.status(401).json({
+                error: "Incorrect email and/or password."
+            })
+        }
+        else {
+            user.isCorrectPassword(password, function(err, same) {
+                if (err) {
+                    res.status(500).json({
+                        error: "Internal Error."
+                    });
+                }
+                else if (!same) {
+                    res.status(401).json({
+                        error: "Incorrect email and/or password."
+                    })
+                }
+                else {
+                    /* Token Stuff */
+                    res.status(200).send("Looks like a match!");
+
+
+                }
+            })
+        }
+    });
+})
+
 app.listen(8080);
