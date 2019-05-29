@@ -11,11 +11,13 @@ class RegisterPage extends React.Component {
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
+        this.register = this.register.bind(this);
 
         this.state = {
             Login: "",
             Password: "",
-            ConfirmPassword: ""
+            ConfirmPassword: "",
+            PasswordGood: false
         }
     }
 
@@ -40,8 +42,20 @@ class RegisterPage extends React.Component {
             Login: this.state.Login,
             Password: this.state.Password,
             ConfirmPassword: event.target.value
-        })
+        }, () => {
+            if (this.checkPassword() === "✓" && String(this.state.Password) === String(this.state.ConfirmPassword)) {
+                this.setState({
+                    PasswordGood: true
+                });
+            }
+            else {
+                this.setState({
+                    PasswordGood: false
+                });
+            }
+        });
     }
+
 
     checkPassword() {
         if (String(this.state.Password).length >= 8) {
@@ -53,7 +67,7 @@ class RegisterPage extends React.Component {
     }
 
     checkConfirmPassword() {
-        if (this.state.Password === this.state.ConfirmPassword && this.checkPassword() === "✓") {
+        if (this.state.PasswordGood === true) {
             return (
                 <InputGroup.Append>
                     <InputGroup.Text> ✓ </InputGroup.Text>
@@ -70,6 +84,45 @@ class RegisterPage extends React.Component {
         else {
             return;
         }
+    }
+
+    showButton() {
+        if (this.state.PasswordGood === true) {
+            return (
+                <div className="loginButton">
+                    <Button variant="primary" size="md" block onClick={this.register}>
+                        Register
+                    </Button>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div className="loginButton">
+                    <Button variant="primary" size="md" block disabled>
+                        Register
+                    </Button>
+                </div>
+            )
+        }
+    }
+
+    register() {
+        const url = "http://localhost:8080/api/register";
+
+        const data = {
+            "username": this.state.Login,
+            "password": this.state.Password
+        };
+
+        fetch(url, {
+            credentials: 'same-origin',
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                "content-type" : "application/json"
+            }
+        }).then(res => console.log(res));
     }
 
     render() {
@@ -100,11 +153,9 @@ class RegisterPage extends React.Component {
                     {this.checkConfirmPassword()}
                 </InputGroup>
 
-                <div className="loginButton">
-                    <Button variant="primary" size="md" block>
-                        Register
-                    </Button>
-                </div>
+                {this.showButton()}
+
+                <div id="registrationStatus"></div>
             </>
 
         )

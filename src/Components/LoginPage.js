@@ -11,6 +11,7 @@ class LoginPage extends React.Component {
 
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.login = this.login.bind(this);
 
         this.state = {
             Login: "",
@@ -32,6 +33,24 @@ class LoginPage extends React.Component {
         })
     }
 
+    login() {
+        const url = "http://localhost:8080/api/login";
+
+        const data = {
+            "username": this.state.Login,
+            "password": this.state.Password
+        };
+
+        fetch(url, {
+            credentials: 'same-origin',
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                "content-type" : "application/json"
+            }
+        }).then(res => console.log(res));
+    }
+
     render() {
         return (
             <>
@@ -50,7 +69,7 @@ class LoginPage extends React.Component {
                 </InputGroup>
 
                 <div className="loginButton">
-                    <Button variant="primary" size="md" block>
+                    <Button variant="primary" size="md" block onClick = {this.login}>
                         Login
                     </Button>
                 </div>
