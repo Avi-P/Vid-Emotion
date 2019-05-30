@@ -15,7 +15,9 @@ class LoginPage extends React.Component {
 
         this.state = {
             Login: "",
-            Password: ""
+            Password: "",
+            showResult: false,
+            resultText: ""
         }
     }
 
@@ -36,6 +38,8 @@ class LoginPage extends React.Component {
     login() {
         const url = "http://localhost:8080/api/login";
 
+        let that = this;
+
         const data = {
             "username": this.state.Login,
             "password": this.state.Password
@@ -48,7 +52,30 @@ class LoginPage extends React.Component {
             headers: {
                 "content-type" : "application/json"
             }
-        }).then(res => console.log(res));
+        }).then(function(response) {
+
+            if (response.status === 401) {
+                that.setState({
+                    showResult: true,
+                    resultText: "Incorrect Email/Password"
+                });
+            }
+            else if (response.status === 500) {
+                that.setState({
+                    showResult: true,
+                    resultText: "Internal Error"
+                });
+            }
+            else {
+                that.setState({
+                    showResult: true,
+                    resultText: "Login Successful"
+                });
+            }
+
+            console.log(response);
+        });
+
     }
 
     render() {
@@ -65,7 +92,7 @@ class LoginPage extends React.Component {
                     <InputGroup.Prepend>
                         <InputGroup.Text id="login"> Password </InputGroup.Text>
                     </InputGroup.Prepend>
-                    <FormControl placeholder = "Password" onChange = {this.handlePasswordChange}/>
+                    <FormControl type="password" placeholder = "Password" onChange = {this.handlePasswordChange}/>
                 </InputGroup>
 
                 <div className="loginButton">
@@ -73,6 +100,8 @@ class LoginPage extends React.Component {
                         Login
                     </Button>
                 </div>
+
+                {this.state.showResult && <h3 className="resultText"> {this.state.resultText} </h3>}
             </>
 
         )

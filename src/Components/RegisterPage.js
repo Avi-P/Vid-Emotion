@@ -108,6 +108,8 @@ class RegisterPage extends React.Component {
     }
 
     register() {
+        let that = this;
+
         const url = "http://localhost:8080/api/register";
 
         const data = {
@@ -122,7 +124,23 @@ class RegisterPage extends React.Component {
             headers: {
                 "content-type" : "application/json"
             }
-        }).then(res => console.log(res));
+        }).then(function(response) {
+
+            if (response.status === 500) {
+                that.setState({
+                    showResult: true,
+                    resultText: "Error Registering"
+                });
+            }
+            else {
+                that.setState({
+                    showResult: true,
+                    resultText: "Registration Successful"
+                });
+            }
+
+            console.log(response);
+        })
     }
 
     render() {
@@ -155,7 +173,7 @@ class RegisterPage extends React.Component {
 
                 {this.showButton()}
 
-                <div id="registrationStatus"></div>
+                {this.state.showResult && <h3 className="resultText"> {this.state.resultText} </h3>}
             </>
 
         )

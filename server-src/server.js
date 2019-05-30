@@ -75,7 +75,7 @@ app.post("/api/login", function(req, res) {
                 }
                 else {
                     /* Token Stuff */
-                    console.log("Login!");
+                    console.log("Logged In.");
                     res.status(200).send("Looks like a match!");
 
 
