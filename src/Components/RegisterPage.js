@@ -5,6 +5,8 @@ import FormControl from "react-bootstrap/FormControl"
 import Button from "react-bootstrap/Button"
 
 class RegisterPage extends React.Component {
+
+
     constructor(props) {
         super(props);
 
@@ -55,7 +57,6 @@ class RegisterPage extends React.Component {
             }
         });
     }
-
 
     checkPassword() {
         if (String(this.state.Password).length >= 8) {

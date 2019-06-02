@@ -5,6 +5,8 @@ import Home from "./Sites/Home/Home"
 import AppSite from "./Sites/App_Site/App_Site"
 import Analytics from "./Sites/Analytics/Analytics"
 
+import withAuth from './Components/withAuth'
+
 import './App.css';
 
 function App() {
@@ -13,7 +15,7 @@ function App() {
         <div>
             <Route path="/" exact component={Home} />
             <Route path="/app" component={AppSite} />
-            <Route path="/analytics" component={Analytics} />
+            <Route path="/analytics" component={withAuth(Analytics)} />
         </div>
       </Router>
    </>;

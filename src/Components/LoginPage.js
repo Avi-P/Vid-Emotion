@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import InputGroup from "react-bootstrap/InputGroup"
 import FormControl from "react-bootstrap/FormControl"
@@ -12,6 +13,7 @@ class LoginPage extends React.Component {
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.login = this.login.bind(this);
+        this.test = this.test.bind(this);
 
         this.state = {
             Login: "",
@@ -35,45 +37,83 @@ class LoginPage extends React.Component {
         })
     }
 
+    setToken = idToken => {
+        // Saves user token to localStorage
+        localStorage.setItem("app_token", idToken);
+    };
+
+    getToken = () => {
+        // Retrieves the user token from localStorage
+        return localStorage.getItem("app_token");
+    };
+
     login() {
-        const url = "http://localhost:8080/api/login";
+            const url = "http://localhost:8080/api/login";
+
+            let that = this;
+
+            const data = {
+                "username": this.state.Login,
+                "password": this.state.Password
+            };
+
+            fetch(url, {
+                credentials: 'same-origin',
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    "content-type" : "application/json"
+                }
+            }).then(function(res) {
+                return res.json();
+            }).then(function(response) {
+
+                if (response.status === 401) {
+                    that.setState({
+                        showResult: true,
+                        resultText: "Incorrect Email/Password"
+                    });
+                }
+                else if (response.status === 500) {
+                    that.setState({
+                        showResult: true,
+                        resultText: "Internal Error"
+                    });
+                }
+                else {
+                    //console.log(response.headers);
+
+                    that.setToken(response.token);
+
+                    that.setState({
+                        showResult: true,
+                        resultText: "Login Successful"
+                    });
+
+                    console.log(response);
+
+                    //return Promise.resolve(response);
+                }
+            });
+
+    }
+
+    test() {
+        const url = "http://localhost:8080/api/secret";
 
         let that = this;
 
-        const data = {
-            "username": this.state.Login,
-            "password": this.state.Password
-        };
+        console.log("Bearer " + that.getToken());
 
         fetch(url, {
             credentials: 'same-origin',
-            method: 'POST',
-            body: JSON.stringify(data),
+            method: 'GET',
             headers: {
-                "content-type" : "application/json"
+                "content-type" : "application/json",
+                'Authorization': "Bearer " + that.getToken(),
             }
         }).then(function(response) {
-
-            if (response.status === 401) {
-                that.setState({
-                    showResult: true,
-                    resultText: "Incorrect Email/Password"
-                });
-            }
-            else if (response.status === 500) {
-                that.setState({
-                    showResult: true,
-                    resultText: "Internal Error"
-                });
-            }
-            else {
-                that.setState({
-                    showResult: true,
-                    resultText: "Login Successful"
-                });
-            }
-
-            console.log(response);
+            console.log(response.text());
         });
 
     }
@@ -101,6 +141,13 @@ class LoginPage extends React.Component {
                     </Button>
                 </div>
 
+                <div className="loginButton">
+                    <Button variant="primary" size="md" block onClick = {this.test}>
+                        Test
+                    </Button>
+                </div>
+
+
                 {this.state.showResult && <h3 className="resultText"> {this.state.resultText} </h3>}
             </>
 
@@ -108,4 +155,4 @@ class LoginPage extends React.Component {
     }
 }
 
-export default LoginPage
+export default withRouter(LoginPage)
