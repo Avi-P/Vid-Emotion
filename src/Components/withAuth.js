@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
+import NavigationBar from "../Sites/Home/Home";
 
 export default function withAuth(ProtectedComponent) {
     return class extends Component {
@@ -53,8 +54,9 @@ export default function withAuth(ProtectedComponent) {
             }
             if (redirect) {
                 return (
+
                     <React.Fragment>
-                        <h1> Please Log In</h1>
+                        <h2> Please go back and log In </h2>
                     </React.Fragment>
                 )
             }

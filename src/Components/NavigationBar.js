@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
+import Dropdown from 'react-bootstrap/Dropdown'
 
 import LoginPage from "./LoginPage"
 import RegisterPage from "./RegisterPage";
@@ -16,6 +17,7 @@ class NavigationBar extends React.Component {
 
         this.handleClick = this.handleClick.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.removeToken = this.removeToken.bind(this);
 
         this.state = {
             show: false
@@ -34,6 +36,33 @@ class NavigationBar extends React.Component {
         })
     }
 
+    showLoginOrLogOut() {
+        {if (this.getToken() != null) {
+            return (<Dropdown>
+                <Dropdown.Toggle variant="outline-primary" id="dropdown-basic">
+                    Logged In
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                    <Dropdown.Item onClick = {this.removeToken}>Log Out</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>);
+        }
+        else {
+            return (<Button variant="outline-primary" onClick = {this.handleClick}>Login</Button>);
+        }}
+    }
+
+    getToken = () => {
+        // Retrieves the user token from localStorage
+        return localStorage.getItem("app_token");
+    };
+
+    removeToken = () => {
+        localStorage.removeItem("app_token");
+        window.location.reload();
+    }
+
     render() {
         return (
             <>
@@ -45,7 +74,9 @@ class NavigationBar extends React.Component {
                             <Nav.Link href="/app">Watch & Analyze</Nav.Link>
                             <Nav.Link href="/analytics">Analytics</Nav.Link>
                         </Nav>
-                        <Button variant="outline-primary" onClick = {this.handleClick}>Login</Button>
+
+                        {this.showLoginOrLogOut()}
+
                     </Navbar.Collapse>
                 </Navbar>
 
