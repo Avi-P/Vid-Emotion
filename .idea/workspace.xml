@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6b565f5-46d8-4830-bcb5-d5b09393b548" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/AuthenticationHelper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-src/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/server-src/Users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-src/authMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/server-src/authMiddleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server-src/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NavigationBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/RegisterPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/RegisterPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/withAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/withAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sites/Analytics/Analytics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sites/Analytics/Analytics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sites/App_Site/App_Site.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sites/App_Site/App_Site.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sites/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sites/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +36,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server-src/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-691">
+            <state relative-caret-position="-779">
               <caret line="43" column="18" lean-forward="true" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
               <folding>
                 <element signature="e#606#716#0" />
@@ -63,15 +50,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Components/LoginPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="76" column="23" lean-forward="true" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+            <state relative-caret-position="264">
+              <caret line="87" column="37" lean-forward="true" selection-start-line="87" selection-start-column="37" selection-end-line="87" selection-end-column="37" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="n#!!block;n#constructor#0;n#LoginPage#0" />
                 <element signature="n#!!block;n#handleUsernameChange#0;n#LoginPage#0" />
                 <element signature="n#!!block;n#handlePasswordChange#0;n#LoginPage#0" />
                 <element signature="n#!!block;n#test#0;n#LoginPage#0" />
-                <element signature="n#!!block;n#render#0;n#LoginPage#0" />
               </folding>
             </state>
           </provider>
@@ -128,10 +114,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="952" />
-    <option name="width" value="977" />
-    <option name="height" value="1038" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="232" />
+    <option name="y" value="-15" />
+    <option name="width" value="1493" />
+    <option name="height" value="999" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -199,7 +186,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559620643209" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559623092341" />
     <property name="js.last.introduce.type" value="LET" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Interesting CS Stuff/REST API NODE" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -250,18 +237,18 @@
       <workItem from="1558329775255" duration="16597000" />
       <workItem from="1558504311605" duration="592000" />
       <workItem from="1558510937459" duration="13073000" />
-      <workItem from="1558661914825" duration="62752000" />
+      <workItem from="1558661914825" duration="64922000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94675000" />
+    <option name="totallyTimeSpent" value="96845000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="762" y="0" width="781" height="830" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30098453" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1445946" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -270,7 +257,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932432" weight="0.32991204" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932432" visible="true" weight="0.2462908" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932432" visible="true" weight="0.24340177" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -507,6 +494,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server-src/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-779">
+          <caret line="43" column="18" lean-forward="true" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+          <folding>
+            <element signature="e#606#716#0" />
+            <element signature="e#796#976#0" />
+            <element signature="e#3182#3257#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/RegisterPage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="639">
@@ -526,29 +525,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server-src/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-691">
-          <caret line="43" column="18" lean-forward="true" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
-          <folding>
-            <element signature="e#606#716#0" />
-            <element signature="e#796#976#0" />
-            <element signature="e#3182#3257#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/LoginPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="76" column="23" lean-forward="true" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+        <state relative-caret-position="264">
+          <caret line="87" column="37" lean-forward="true" selection-start-line="87" selection-start-column="37" selection-end-line="87" selection-end-column="37" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
             <element signature="n#!!block;n#constructor#0;n#LoginPage#0" />
             <element signature="n#!!block;n#handleUsernameChange#0;n#LoginPage#0" />
             <element signature="n#!!block;n#handlePasswordChange#0;n#LoginPage#0" />
             <element signature="n#!!block;n#test#0;n#LoginPage#0" />
-            <element signature="n#!!block;n#render#0;n#LoginPage#0" />
           </folding>
         </state>
       </provider>

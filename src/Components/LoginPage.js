@@ -65,37 +65,37 @@ class LoginPage extends React.Component {
                     "content-type" : "application/json"
                 }
             }).then(function(res) {
-                return res.json();
-            }).then(function(response) {
-
-                console.log(response.status);
-
-                if (response.status === 401) {
+                if (res.status === 401) {
                     that.setState({
                         showResult: true,
                         resultText: "Incorrect Email/Password"
                     });
                 }
-                else if (response.status === 500) {
+                else if (res.status === 500) {
                     that.setState({
                         showResult: true,
                         resultText: "Internal Error"
                     });
                 }
-                else {
-                    //console.log(response.headers);
 
-                    AuthenticationHelper.setToken(response.token);
+                return res.json();
+            }).then(function(response) {
 
-                    that.setState({
-                        showResult: true,
-                        resultText: "Login Successful"
-                    });
-
-                    console.log(response);
-
-                    //return Promise.resolve(response);
+                if (response.error) {
+                    return;
                 }
+
+                AuthenticationHelper.setToken(response.token);
+
+                that.setState({
+                    showResult: true,
+                    resultText: "Login Successful"
+                });
+
+                console.log(response);
+
+                return Promise.resolve(response);
+
             });
 
     }
