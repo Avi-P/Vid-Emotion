@@ -4,9 +4,15 @@ import { withRouter } from "react-router-dom";
 import InputGroup from "react-bootstrap/InputGroup"
 import FormControl from "react-bootstrap/FormControl"
 import Button from "react-bootstrap/Button"
+
 import "./LoginPage.css"
 
+import AuthenticationHelper from "./AuthenticationHelper"
+
+/* Page to login/authenticate */
 class LoginPage extends React.Component {
+
+    /* Constructor for page and props/states */
     constructor(props) {
         super(props);
 
@@ -23,6 +29,7 @@ class LoginPage extends React.Component {
         }
     }
 
+    /* Used to update state variable as the username value changes */
     handleUsernameChange(event) {
         this.setState({
             Login: event.target.value,
@@ -30,6 +37,7 @@ class LoginPage extends React.Component {
         })
     }
 
+    /* Used to update password state variable as the password value changes */
     handlePasswordChange(event) {
         this.setState({
             Login: this.state.Login,
@@ -37,16 +45,8 @@ class LoginPage extends React.Component {
         })
     }
 
-    setToken = idToken => {
-        // Saves user token to localStorage
-        localStorage.setItem("app_token", idToken);
-    };
-
-    getToken = () => {
-        // Retrieves the user token from localStorage
-        return localStorage.getItem("app_token");
-    };
-
+    /* Called when login button is pressed. HTTP Request to login and calls
+        method to save JWT token */
     login() {
             const url = "http://localhost:8080/api/login";
 
@@ -68,6 +68,8 @@ class LoginPage extends React.Component {
                 return res.json();
             }).then(function(response) {
 
+                console.log(response.status);
+
                 if (response.status === 401) {
                     that.setState({
                         showResult: true,
@@ -83,7 +85,7 @@ class LoginPage extends React.Component {
                 else {
                     //console.log(response.headers);
 
-                    that.setToken(response.token);
+                    AuthenticationHelper.setToken(response.token);
 
                     that.setState({
                         showResult: true,
@@ -98,19 +100,18 @@ class LoginPage extends React.Component {
 
     }
 
+    /* Test HTTP Request to check if token authentication works */
     test() {
         const url = "http://localhost:8080/api/secret";
 
-        let that = this;
-
-        console.log("Bearer " + that.getToken());
+        console.log("Bearer " + AuthenticationHelper.getToken());
 
         fetch(url, {
             credentials: 'same-origin',
             method: 'GET',
             headers: {
                 "content-type" : "application/json",
-                'Authorization': "Bearer " + that.getToken(),
+                'Authorization': "Bearer " + AuthenticationHelper.getToken(),
             }
         }).then(function(response) {
             console.log(response.text());
@@ -118,6 +119,7 @@ class LoginPage extends React.Component {
 
     }
 
+    /* Contains what is shown on the page */
     render() {
         return (
             <>
@@ -141,11 +143,11 @@ class LoginPage extends React.Component {
                     </Button>
                 </div>
 
-                <div className="loginButton">
-                    <Button variant="primary" size="md" block onClick = {this.test}>
-                        Test
-                    </Button>
-                </div>
+                {/*<div className="loginButton">*/}
+                    {/*<Button variant="primary" size="md" block onClick = {this.test}>*/}
+                        {/*Test*/}
+                    {/*</Button>*/}
+                {/*</div>*/}
 
 
                 {this.state.showResult && <h3 className="resultText"> {this.state.resultText} </h3>}

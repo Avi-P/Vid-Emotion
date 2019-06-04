@@ -5,6 +5,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 
 import "./Home.css"
 
+/* Home page of the web app */
 function Home() {
     return <>
             <NavigationBar />

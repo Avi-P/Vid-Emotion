@@ -2,8 +2,13 @@ import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 import NavigationBar from "../Sites/Home/Home";
 
+import AuthenticationHelper from "./AuthenticationHelper"
+
+/* Class to protect components with authentication */
 export default function withAuth(ProtectedComponent) {
     return class extends Component {
+
+        /* Constructor */
         constructor() {
             super();
 
@@ -13,18 +18,14 @@ export default function withAuth(ProtectedComponent) {
             };
         }
 
-        getToken = () => {
-            // Retrieves the user token from localStorage
-            return localStorage.getItem("app_token");
-        };
-
+        /* Performs HTTP Request to check token when component mounts */
         componentDidMount() {
             fetch('http://localhost:8080/api/checkToken', {
                 credentials: 'same-origin',
                 method: 'GET',
                 headers: {
                     "content-type" : "application/json",
-                    'Authorization': "Bearer " + this.getToken(),
+                    'Authorization': "Bearer " + AuthenticationHelper.getToken(),
                 }
             }).then(res => {
                     if (res.status === 200) {
@@ -42,10 +43,13 @@ export default function withAuth(ProtectedComponent) {
                 });
         }
 
+        /* Sends different front-end code depending on whether user is authenticated */
         render() {
             const {loading, redirect} = this.state;
 
             if (loading) {
+
+                /* Shown while token is checked */
                 return (
                     <React.Fragment>
                         <h1> Loading </h1>
@@ -53,14 +57,16 @@ export default function withAuth(ProtectedComponent) {
                 )
             }
             if (redirect) {
-                return (
 
+                /* Returned if user is not authenticated in */
+                return (
                     <React.Fragment>
                         <h2> Please go back and log In </h2>
                     </React.Fragment>
                 )
             }
 
+            /* Return the normal page if user is authenticated */
             return (
                 <React.Fragment>
                     <ProtectedComponent {...this.props} />

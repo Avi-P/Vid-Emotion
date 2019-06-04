@@ -11,7 +11,12 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import LoginPage from "./LoginPage"
 import RegisterPage from "./RegisterPage";
 
+import AuthenticationHelper from "./AuthenticationHelper"
+
+/* Top navigation bar for the web app */
 class NavigationBar extends React.Component {
+
+    /* Constructor/props/state */
     constructor(props) {
         super(props);
 
@@ -24,20 +29,23 @@ class NavigationBar extends React.Component {
         }
     }
 
+    /* Handles close of the login/register modal */
     handleClose() {
         this.setState({
             show: false
         })
     }
 
+    /* Handles click on button to show login/register modal */
     handleClick() {
         this.setState({
             show: true
         })
     }
 
+    /* Shows login button or logout button depending on whether user has JWT token */
     showLoginOrLogOut() {
-        {if (this.getToken() != null) {
+        {if (AuthenticationHelper.getToken() != null) {
             return (<Dropdown>
                 <Dropdown.Toggle variant="outline-primary" id="dropdown-basic">
                     Logged In
@@ -53,16 +61,12 @@ class NavigationBar extends React.Component {
         }}
     }
 
-    getToken = () => {
-        // Retrieves the user token from localStorage
-        return localStorage.getItem("app_token");
+    /* Function that calls helper method to remove token from local storage */
+    removeToken = () => {
+        AuthenticationHelper.removeToken();
     };
 
-    removeToken = () => {
-        localStorage.removeItem("app_token");
-        window.location.reload();
-    }
-
+    /* Contains code/logic for what is shown on the browser */
     render() {
         return (
             <>

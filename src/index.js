@@ -10,6 +10,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
+/* Entry point of the react app */
 ReactDOM.render(
     <BrowserRouter>
         <App />

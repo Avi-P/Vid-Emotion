@@ -9,12 +9,13 @@ import withAuth from './Components/withAuth'
 
 import './App.css';
 
+/* Contains router for different web pages in the react app */
 function App() {
   return <>
       <Router>
         <div>
             <Route path="/" exact component={Home} />
-            <Route path="/app" component={AppSite} />
+            <Route path="/app" component={withAuth(AppSite)} />
             <Route path="/analytics" component={withAuth(Analytics)} />
         </div>
       </Router>

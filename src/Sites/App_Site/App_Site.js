@@ -9,7 +9,10 @@ import YouTube from "react-youtube"
 
 import "./App_Site.css"
 
+/* Application Site */
 class AppSite extends React.Component {
+
+    /* Constructor/props/state */
     constructor(props) {
         super(props);
 
@@ -25,6 +28,7 @@ class AppSite extends React.Component {
         };
     }
 
+    /* Updates state with value of the form for YouTube video link */
     handleChange(event) {
 
         if (event.target.value === "") {
@@ -43,6 +47,7 @@ class AppSite extends React.Component {
         })
     }
 
+    /* Updates state for when user clicks go to display YouTube video */
     handleClick() {
         this.setState({
             YTVideo: this.state.YTVideo,
@@ -50,6 +55,7 @@ class AppSite extends React.Component {
         })
     }
 
+    /* Called when video ends, used to update state to show more components for rest of application */
     handleVideoEnd() {
         this.setState({
             YTVideo: this.state.YTVideo,
@@ -58,6 +64,7 @@ class AppSite extends React.Component {
         })
     }
 
+    /* Shows emotion picker */
     showEmotionPicker() {
         if (this.state.showEmotionPicker) {
             return <div>
@@ -76,9 +83,11 @@ class AppSite extends React.Component {
         }
     }
 
+    /* Shows Youtube Video */
     showFrameFunc() {
         let picker = this.showEmotionPicker();
 
+        /* Options for YouTube video */
         const options = {
             height: '480',
             width: '720',
@@ -104,6 +113,7 @@ class AppSite extends React.Component {
         }
     }
 
+    /* Contains code for what is shown on screen */
     render() {
         let frame = this.showFrameFunc();
         let picker = this.showEmotionPicker();

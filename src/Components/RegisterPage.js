@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button"
 
 class RegisterPage extends React.Component {
 
-
+    /* Constructor/props/state */
     constructor(props) {
         super(props);
 
@@ -23,6 +23,7 @@ class RegisterPage extends React.Component {
         }
     }
 
+    /* Updates state username variable as username changes */
     handleUsernameChange(event) {
         this.setState({
             Login: event.target.value,
@@ -31,6 +32,7 @@ class RegisterPage extends React.Component {
         })
     }
 
+    /* Updates state password variable as username changes */
     handlePasswordChange(event) {
         this.setState({
             Login: this.state.Login,
@@ -39,6 +41,7 @@ class RegisterPage extends React.Component {
         })
     }
 
+    /* Updates state confirm password variable as username changes */
     handleConfirmPasswordChange(event) {
         this.setState({
             Login: this.state.Login,
@@ -58,6 +61,7 @@ class RegisterPage extends React.Component {
         });
     }
 
+    /* Checks if password meets security requirement */
     checkPassword() {
         if (String(this.state.Password).length >= 8) {
             return "✓";
@@ -67,6 +71,7 @@ class RegisterPage extends React.Component {
         }
     }
 
+    /* Checks if confirm password matches password and contains logic to show checkmark or X */
     checkConfirmPassword() {
         if (this.state.PasswordGood === true) {
             return (
@@ -87,6 +92,7 @@ class RegisterPage extends React.Component {
         }
     }
 
+    /* Logic for whether register button should show. Depends on password matching and security requirement */
     showButton() {
         if (this.state.PasswordGood === true) {
             return (
@@ -108,6 +114,7 @@ class RegisterPage extends React.Component {
         }
     }
 
+    /* Performs HTTP Request to do registration in the mongodb */
     register() {
         let that = this;
 
@@ -144,6 +151,7 @@ class RegisterPage extends React.Component {
         })
     }
 
+    /* Contains code/logic for what is shown on the browser */
     render() {
         return (
             <>
