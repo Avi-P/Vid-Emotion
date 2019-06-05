@@ -1,0 +1,28 @@
+Database: Videos and Users Emotions on them (Name WIP)
+- Username
+    - Get from Token when accessing DB
+- Time
+    - Used for sorting
+- Video ID
+- Possibly Video Name too
+- General Topic/Field Video is in
+- Rating
+    - Numerical Rating (Probably words mapped to numbers) *or*
+    - One Word Description
+
+Queries to be used
+------------------
+db.<collection>.find({username : "<name>"}).sort({time: 1}).limit(<number>)
+
+db.<collection>.insert({username: "<username>",
+                        time: "<time>",
+                        vid_id: "<vid_id>",
+                        topic: "<topic>",
+                        rating: "<rating>"})
+
+db.<collection>.aggregate([
+                     { $match: { username: "<name>" } },
+                     { $group: { topic: "$topic", average_score: { $avg: "$rating" } } } }
+                   ])
+
+Deletion Possibly?
