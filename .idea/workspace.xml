@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6b565f5-46d8-4830-bcb5-d5b09393b548" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server-src/Database Design.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server-src/VideoUserLink.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sites/App_Site/App_Site.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sites/App_Site/App_Site.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,10 +52,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server-src/Users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="42" column="68" lean-forward="true" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+            <state relative-caret-position="374">
+              <caret line="55" selection-start-line="55" selection-end-line="55" selection-end-column="53" />
               <folding>
-                <element signature="e#234#394#0" />
                 <element signature="e#508#985#0" />
                 <element signature="e#1140#1392#0" />
               </folding>
@@ -63,26 +63,37 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/LoginPage.js">
+        <entry file="file://$PROJECT_DIR$/server-src/Database Design.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+            <state relative-caret-position="374">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sites/App_Site/App_Site.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="107" column="14" selection-start-line="107" selection-start-column="14" selection-end-line="107" selection-end-column="14" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <element signature="n#!!block;n#constructor#0;n#LoginPage#0" />
-                <element signature="n#!!block;n#handleUsernameChange#0;n#LoginPage#0" />
-                <element signature="n#!!block;n#handlePasswordChange#0;n#LoginPage#0" />
-                <element signature="n#!!block;n#test#0;n#LoginPage#0" />
+                <element signature="n#!!block;n#constructor#0;n#AppSite#0" />
+                <element signature="n#!!block;n#handleChange#0;n#AppSite#0" />
+                <element signature="n#!!block;n#handleClick#0;n#AppSite#0" />
+                <element signature="n#!!block;n#handleVideoEnd#0;n#AppSite#0" />
+                <element signature="n#!!block;n#showEmotionPicker#0;n#AppSite#0" />
+                <element signature="n#!!block;n#render#0;n#AppSite#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server-src/Database Design.txt">
+        <entry file="file://$PROJECT_DIR$/server-src/VideoUserLink.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="167">
+              <caret line="23" column="6" lean-forward="true" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -129,7 +140,6 @@
         <option value="$PROJECT_DIR$/src/Components/NavigationBar.js" />
         <option value="$PROJECT_DIR$/src/Components/RegisterPage.js" />
         <option value="$PROJECT_DIR$/src/Sites/Analytics/Analytics.js" />
-        <option value="$PROJECT_DIR$/src/Sites/App_Site/App_Site.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/Components/withAuth.js" />
@@ -137,12 +147,14 @@
         <option value="$PROJECT_DIR$/server-src/server.js" />
         <option value="$PROJECT_DIR$/src/Components/LoginPage.js" />
         <option value="$PROJECT_DIR$/server-src/Database Design.txt" />
+        <option value="$PROJECT_DIR$/src/Sites/App_Site/App_Site.js" />
+        <option value="$PROJECT_DIR$/server-src/VideoUserLink.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="561" />
-    <option name="y" value="-9" />
+    <option name="x" value="-100" />
+    <option name="y" value="-19" />
     <option name="width" value="1493" />
     <option name="height" value="999" />
   </component>
@@ -212,7 +224,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559713906969" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559802517030" />
     <property name="js.last.introduce.type" value="LET" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Interesting CS Stuff/REST API NODE" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -263,18 +275,18 @@
       <workItem from="1558329775255" duration="16597000" />
       <workItem from="1558504311605" duration="592000" />
       <workItem from="1558510937459" duration="13073000" />
-      <workItem from="1558661914825" duration="69816000" />
+      <workItem from="1558661914825" duration="74418000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101739000" />
+    <option name="totallyTimeSpent" value="106341000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1445946" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1445946" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -283,7 +295,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932432" weight="0.32991204" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932432" visible="true" weight="0.24340177" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932432" visible="true" weight="0.24340177" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -454,23 +466,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sites/App_Site/App_Site.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="115" column="49" lean-forward="true" selection-start-line="115" selection-start-column="49" selection-end-line="115" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#AppSite#0" />
-            <element signature="n#!!block;n#handleChange#0;n#AppSite#0" />
-            <element signature="n#!!block;n#handleClick#0;n#AppSite#0" />
-            <element signature="n#!!block;n#handleVideoEnd#0;n#AppSite#0" />
-            <element signature="n#!!block;n#showEmotionPicker#0;n#AppSite#0" />
-            <element signature="n#!!block;n#showFrameFunc#0;n#AppSite#0" />
-            <element signature="n#!!block;n#render#0;n#AppSite#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sites/Home/Home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -541,6 +536,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server-src/Users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="55" selection-start-line="55" selection-end-line="55" selection-end-column="53" />
+          <folding>
+            <element signature="e#508#985#0" />
+            <element signature="e#1140#1392#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server-src/Database Design.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-youtube/build/preset-es2015.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-youtube/es/YouTube.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7419" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-youtube/dist/YouTube.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1672" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server-src/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -553,22 +579,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server-src/Users.js">
+    <entry file="file://$PROJECT_DIR$/src/Sites/App_Site/App_Site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="42" column="68" lean-forward="true" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+        <state relative-caret-position="277">
+          <caret line="107" column="14" selection-start-line="107" selection-start-column="14" selection-end-line="107" selection-end-column="14" />
           <folding>
-            <element signature="e#234#394#0" />
-            <element signature="e#508#985#0" />
-            <element signature="e#1140#1392#0" />
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#AppSite#0" />
+            <element signature="n#!!block;n#handleChange#0;n#AppSite#0" />
+            <element signature="n#!!block;n#handleClick#0;n#AppSite#0" />
+            <element signature="n#!!block;n#handleVideoEnd#0;n#AppSite#0" />
+            <element signature="n#!!block;n#showEmotionPicker#0;n#AppSite#0" />
+            <element signature="n#!!block;n#render#0;n#AppSite#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server-src/Database Design.txt">
+    <entry file="file://$PROJECT_DIR$/server-src/VideoUserLink.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="167">
+          <caret line="23" column="6" lean-forward="true" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
         </state>
       </provider>
     </entry>

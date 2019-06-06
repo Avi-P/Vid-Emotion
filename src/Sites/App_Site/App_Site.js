@@ -97,12 +97,18 @@ class AppSite extends React.Component {
         };
 
         if (this.state.showFrame) {
-            return <div className = "YTFrame">
+
+            let YouTubePlayer = (
                 <YouTube
                     videoId = {this.state.YTVideo}
                     opts = {options}
                     onEnd = {this.handleVideoEnd}
-                />
+                />);
+
+            //console.log(YouTubePlayer.props.internalPlayer);
+
+            return <div className = "YTFrame">
+                {YouTubePlayer}
 
                 {picker}
 
