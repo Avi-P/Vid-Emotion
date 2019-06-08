@@ -8,6 +8,7 @@ import Form from "react-bootstrap/Form"
 import YouTube from "react-youtube"
 
 import "./App_Site.css"
+import AuthenticationHelper from "../../Components/AuthenticationHelper";
 
 /* Application Site */
 class AppSite extends React.Component {
@@ -24,7 +25,8 @@ class AppSite extends React.Component {
         this.state = {
             YTVideo: "",
             showFrame: false,
-            showEmotionPicker: false
+            showEmotionPicker: false,
+            choice: ""
         };
     }
 
@@ -61,6 +63,50 @@ class AppSite extends React.Component {
             YTVideo: this.state.YTVideo,
             showFrame: this.state.showFrame,
             showEmotionPicker: true
+        })
+    }
+
+    /* Called when a choice is made by the user */
+    handlePick(event) {
+        this.setState({
+            choice: event.target.value
+        })
+
+        return;
+    }
+
+    handleSubmit() {
+        const url = "http://localhost:8080/api/emotion";
+
+        const data = {
+            "videoID": this.state.YTVideo,
+            "emotion": this.state.choice
+        };
+
+        fetch(url, {
+            credentials: 'same-origin',
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                "content-type" : "application/json",
+                'Authorization': "Bearer " + AuthenticationHelper.getToken(),
+            }
+        }).then(function(response) {
+
+            if (response.status === 500) {
+                // that.setState({
+                //     showResult: true,
+                //     resultText: "Error Registering"
+                // });
+            }
+            else {
+                // that.setState({
+                //     showResult: true,
+                //     resultText: "Registration Successful"
+                // });
+            }
+
+            console.log(response);
         })
     }
 
