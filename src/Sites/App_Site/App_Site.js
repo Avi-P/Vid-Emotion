@@ -10,6 +10,8 @@ import YouTube from "react-youtube"
 import "./App_Site.css"
 import AuthenticationHelper from "../../Components/AuthenticationHelper";
 
+
+
 /* Application Site */
 class AppSite extends React.Component {
 
@@ -21,6 +23,8 @@ class AppSite extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.showFrameFunc = this.showFrameFunc.bind(this);
         this.handleVideoEnd = this.handleVideoEnd.bind(this);
+        this.handlePick = this.handlePick.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
         this.state = {
             YTVideo: "",
@@ -70,7 +74,7 @@ class AppSite extends React.Component {
     handlePick(event) {
         this.setState({
             choice: event.target.value
-        })
+        });
 
         return;
     }
@@ -82,6 +86,8 @@ class AppSite extends React.Component {
             "videoID": this.state.YTVideo,
             "emotion": this.state.choice
         };
+
+        console.log("Working !_!");
 
         fetch(url, {
             credentials: 'same-origin',
@@ -116,7 +122,7 @@ class AppSite extends React.Component {
             return <div>
                         <Form.Group>
                             <Form.Label>How did you feel about this video?</Form.Label>
-                            <Form.Control as="select">
+                            <Form.Control as="select" onChange = {this.handlePick}>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -124,6 +130,12 @@ class AppSite extends React.Component {
                                 <option>5</option>
                             </Form.Control>
                         </Form.Group>
+
+                        <div className="PickButton">
+                            <Button variant="primary" size="md" block onClick = {this.handleSubmit}>
+                                Submit
+                            </Button>
+                        </div>
                 </div>;
 
         }

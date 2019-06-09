@@ -149,22 +149,35 @@ app.get('/api/secret', authMiddleware, function(req, res) {
     res.send('Token authentication works');
 });
 
-app.post('/api/emotion', authMiddleware, function(req, res) {
+app.post('/api/emotion', authMiddleware, async function(req, res) {
+
+    console.log("Emotion");
+
+    const fetch = require('node-fetch');
 
     let url = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id="
                 + req.body.videoID
                 + "&regionCode=US&key="
                 + "AIzaSyAcZQ3cGxRxLPwEIPGfpr_jfbkoB06kxig";
 
-    fetch(url, {
+    //console.log(url);
+
+    let response = await fetch(url, {
         method: 'GET',
         headers: {
             "Accept" : "application/json"
         }
-    }).then(function(res){
-        const VideoUser = new VideoUserLink(req.username, Date(), req.body.videoID, res.body.items.snippet.title, categoryID[res.body.items.snippet.categoryID] ,req.body.emotion);
-        return;
     });
+
+    let data = await response.json();
+
+    console.log(data);
+        //const VideoUser = new VideoUserLink(req.username, Date(), req.body.videoID, res.body.items[0].snippet.title, categoryID[res.body.items[0].snippet.categoryId] ,req.body.emotion);
+
+    //    console.log(JSON.stringify(VideoUser));
+
+        return;
+
 });
 
 /* Servers listens on port 8080 */
