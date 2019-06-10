@@ -30,7 +30,7 @@ class AppSite extends React.Component {
             YTVideo: "",
             showFrame: false,
             showEmotionPicker: false,
-            choice: ""
+            choice: 1
         };
     }
 
@@ -79,6 +79,7 @@ class AppSite extends React.Component {
         return;
     }
 
+    /* POSTs to API to save the data in db */
     handleSubmit() {
         const url = "http://localhost:8080/api/emotion";
 

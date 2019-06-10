@@ -60,7 +60,7 @@ mongoose.connect(mongo_url, function(err) {
         throw err;
     }
     else {
-        console.log("Connected to ${mongo_url}");
+        console.log("Connected to " + mongo_url);
     }
 });
 
@@ -149,9 +149,10 @@ app.get('/api/secret', authMiddleware, function(req, res) {
     res.send('Token authentication works');
 });
 
+/* API to save emotion data in to db */
 app.post('/api/emotion', authMiddleware, async function(req, res) {
 
-    console.log("Emotion");
+    //console.log("Emotion");
 
     const fetch = require('node-fetch');
 
@@ -171,12 +172,24 @@ app.post('/api/emotion', authMiddleware, async function(req, res) {
 
     let data = await response.json();
 
-    console.log(data);
-        //const VideoUser = new VideoUserLink(req.username, Date(), req.body.videoID, res.body.items[0].snippet.title, categoryID[res.body.items[0].snippet.categoryId] ,req.body.emotion);
+    console.log(req.username);
+    //console.log(data.items[0].snippet);
+    const VideoUser = new VideoUserLink(
+        {
+            username: req.username.toString(),
+            time: Date(),
+            videoID: req.body.videoID,
+            videoName: data.items[0].snippet.title,
+            topic: categoryID[data.items[0].snippet.categoryId],
+            rating: req.body.emotion
+        }
+    );
 
-    //    console.log(JSON.stringify(VideoUser));
+    VideoUser.save();
 
-        return;
+    console.log(JSON.stringify(VideoUser));
+
+    return;
 
 });
 

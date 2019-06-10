@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+/* Database schema for main data */
 const VideoUserSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -26,6 +27,11 @@ const VideoUserSchema = new mongoose.Schema({
         type: Number,
         required: true
     }
+});
+
+/* Save function into db */
+VideoUserSchema.pre('save', function(next) {
+    next();
 });
 
 module.exports = mongoose.model("VideoUserLink", VideoUserSchema);
