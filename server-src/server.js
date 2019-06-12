@@ -189,5 +189,19 @@ app.post('/api/emotion', authMiddleware, async function(req, res) {
 
 });
 
+
+app.get('/api/emotion/history', authMiddleware, async  function(req, res) {
+    let query = VideoUserLink.aggregate([
+                                    { $match: { username: req.username} },
+                                    { $group: { _id: "$topic",
+                                                avg: { $avg: "$rating" }
+                                              }
+                                    }
+    ], function(err, result) {
+        console.log(JSON.stringify(result));
+    });
+    //console.log(JSON.stringify(query));
+
+});
 /* Servers listens on port 8080 */
 app.listen(8080);

@@ -15,8 +15,8 @@ function App() {
       <Router>
         <div>
             <Route path="/" exact component={Home} />
-            <Route path="/app" component={withAuth(AppSite)} />
             <Route path="/analytics" component={withAuth(Analytics)} />
+            <Route path="/app" component={withAuth(AppSite)} />
         </div>
       </Router>
    </>;
