@@ -128,7 +128,7 @@ app.post("/api/login", function(req, res) {
                         expiresIn: '24h'
                     });
 
-                    console.log("Login: Success - " + token);
+                    console.log("Login: Success - " + username);
 
                     res.status(200).json({token});
                 }
@@ -152,16 +152,12 @@ app.get('/api/secret', authMiddleware, function(req, res) {
 /* API to save emotion data in to db */
 app.post('/api/emotion', authMiddleware, async function(req, res) {
 
-    //console.log("Emotion");
-
     const fetch = require('node-fetch');
 
     let url = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id="
                 + req.body.videoID
                 + "&regionCode=US&key="
                 + "AIzaSyAcZQ3cGxRxLPwEIPGfpr_jfbkoB06kxig";
-
-    //console.log(url);
 
     let response = await fetch(url, {
         method: 'GET',
@@ -172,8 +168,6 @@ app.post('/api/emotion', authMiddleware, async function(req, res) {
 
     let data = await response.json();
 
-    console.log(req.username);
-    //console.log(data.items[0].snippet);
     const VideoUser = new VideoUserLink(
         {
             username: req.username.toString(),
@@ -188,6 +182,8 @@ app.post('/api/emotion', authMiddleware, async function(req, res) {
     VideoUser.save();
 
     console.log(JSON.stringify(VideoUser));
+
+    res.send('Submitted');
 
     return;
 

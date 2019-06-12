@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6b565f5-46d8-4830-bcb5-d5b09393b548" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/server-src/VideoUserLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/server-src/VideoUserLink.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server-src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server-src/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sites/App_Site/App_Site.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sites/App_Site/App_Site.js" afterDir="false" />
     </list>
@@ -17,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server-src/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="151" column="39" selection-start-line="151" selection-start-column="39" selection-end-line="151" selection-end-column="39" />
+            <state relative-caret-position="459">
+              <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
               <folding>
                 <element signature="e#315#349#0" />
                 <element signature="e#538#563#0" />
@@ -28,23 +28,14 @@
                 <element signature="e#1221#1318#0" />
                 <element signature="e#1332#1443#0" />
                 <element signature="e#1457#1542#0" />
-                <element signature="e#1585#2945#0" />
-                <element signature="e#1681#2941#0" />
-                <element signature="e#1868#2027#0" />
                 <element signature="e#1943#2016#0" />
-                <element signature="e#2041#2935#0" />
-                <element signature="e#2108#2924#0" />
-                <element signature="e#2135#2316#0" />
                 <element signature="e#2224#2296#0" />
-                <element signature="e#2349#2546#0" />
                 <element signature="e#2438#2527#0" />
-                <element signature="e#2568#2910#0" />
                 <element signature="e#2590#2607#0" />
                 <element signature="e#2717#2781#0" />
                 <element signature="e#2948#2989#0" />
                 <element signature="e#3053#3105#0" />
                 <element signature="e#3109#3123#0" />
-                <element signature="e#3182#3257#0" />
                 <element signature="e#4805#4909#0" />
                 <element signature="e#3813#3866#0" />
               </folding>
@@ -55,7 +46,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server-src/authMiddleware.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
+            <state relative-caret-position="-22">
               <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
             </state>
           </provider>
@@ -73,17 +64,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Sites/App_Site/App_Site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
+            <state relative-caret-position="177">
+              <caret line="122" column="15" lean-forward="true" selection-start-line="122" selection-start-column="15" selection-end-line="122" selection-end-column="15" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="n#!!block;n#constructor#0;n#AppSite#0" />
                 <element signature="n#!!block;n#handleChange#0;n#AppSite#0" />
                 <element signature="n#!!block;n#handleClick#0;n#AppSite#0" />
                 <element signature="n#!!block;n#handleVideoEnd#0;n#AppSite#0" />
-                <element signature="n#!!block;n#handlePick#0;n#AppSite#0" />
-                <element signature="n#!!block;n#handleSubmit#0;n#AppSite#0" />
-                <element signature="n#!!block;n#showFrameFunc#0;n#AppSite#0" />
-                <element signature="n#!!block;n#render#0;n#AppSite#0" />
               </folding>
             </state>
           </provider>
@@ -92,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server-src/Users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="38" column="5" lean-forward="true" selection-start-line="20" selection-end-line="38" selection-end-column="5" />
+            <state relative-caret-position="151">
+              <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -158,14 +145,14 @@
         <option value="$PROJECT_DIR$/src/Components/LoginPage.js" />
         <option value="$PROJECT_DIR$/server-src/Database Design.txt" />
         <option value="$PROJECT_DIR$/server-src/authMiddleware.js" />
-        <option value="$PROJECT_DIR$/src/Sites/App_Site/App_Site.js" />
         <option value="$PROJECT_DIR$/server-src/VideoUserLink.js" />
         <option value="$PROJECT_DIR$/server-src/server.js" />
+        <option value="$PROJECT_DIR$/src/Sites/App_Site/App_Site.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-98" />
+    <option name="x" value="-8" />
     <option name="y" value="2" />
     <option name="width" value="1934" />
     <option name="height" value="1037" />
@@ -236,7 +223,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560147714246" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560317737858" />
     <property name="js.last.introduce.type" value="LET" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Interesting CS Stuff/REST API NODE" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -287,15 +274,15 @@
       <workItem from="1558329775255" duration="16597000" />
       <workItem from="1558504311605" duration="592000" />
       <workItem from="1558510937459" duration="13073000" />
-      <workItem from="1558661914825" duration="100925000" />
+      <workItem from="1558661914825" duration="105453000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132848000" />
+    <option name="totallyTimeSpent" value="137376000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-78" y="2" width="1547" height="829" extended-state="0" />
+    <frame x="-6" y="2" width="1547" height="829" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14488828" />
@@ -581,20 +568,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server-src/authMiddleware.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server-src/Users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="38" column="5" lean-forward="true" selection-start-line="20" selection-end-line="38" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server-src/VideoUserLink.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -605,10 +578,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server-src/authMiddleware.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-22">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server-src/Users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server-src/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="151" column="39" selection-start-line="151" selection-start-column="39" selection-end-line="151" selection-end-column="39" />
+        <state relative-caret-position="459">
+          <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
           <folding>
             <element signature="e#315#349#0" />
             <element signature="e#538#563#0" />
@@ -618,23 +605,14 @@
             <element signature="e#1221#1318#0" />
             <element signature="e#1332#1443#0" />
             <element signature="e#1457#1542#0" />
-            <element signature="e#1585#2945#0" />
-            <element signature="e#1681#2941#0" />
-            <element signature="e#1868#2027#0" />
             <element signature="e#1943#2016#0" />
-            <element signature="e#2041#2935#0" />
-            <element signature="e#2108#2924#0" />
-            <element signature="e#2135#2316#0" />
             <element signature="e#2224#2296#0" />
-            <element signature="e#2349#2546#0" />
             <element signature="e#2438#2527#0" />
-            <element signature="e#2568#2910#0" />
             <element signature="e#2590#2607#0" />
             <element signature="e#2717#2781#0" />
             <element signature="e#2948#2989#0" />
             <element signature="e#3053#3105#0" />
             <element signature="e#3109#3123#0" />
-            <element signature="e#3182#3257#0" />
             <element signature="e#4805#4909#0" />
             <element signature="e#3813#3866#0" />
           </folding>
@@ -643,17 +621,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Sites/App_Site/App_Site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
+        <state relative-caret-position="177">
+          <caret line="122" column="15" lean-forward="true" selection-start-line="122" selection-start-column="15" selection-end-line="122" selection-end-column="15" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#AppSite#0" />
             <element signature="n#!!block;n#handleChange#0;n#AppSite#0" />
             <element signature="n#!!block;n#handleClick#0;n#AppSite#0" />
             <element signature="n#!!block;n#handleVideoEnd#0;n#AppSite#0" />
-            <element signature="n#!!block;n#handlePick#0;n#AppSite#0" />
-            <element signature="n#!!block;n#handleSubmit#0;n#AppSite#0" />
-            <element signature="n#!!block;n#showFrameFunc#0;n#AppSite#0" />
-            <element signature="n#!!block;n#render#0;n#AppSite#0" />
           </folding>
         </state>
       </provider>

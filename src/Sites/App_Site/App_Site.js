@@ -10,8 +10,6 @@ import YouTube from "react-youtube"
 import "./App_Site.css"
 import AuthenticationHelper from "../../Components/AuthenticationHelper";
 
-
-
 /* Application Site */
 class AppSite extends React.Component {
 
@@ -29,7 +27,7 @@ class AppSite extends React.Component {
         this.state = {
             YTVideo: "",
             showFrame: false,
-            showEmotionPicker: false,
+            showEmotionPicker: true,
             choice: 1
         };
     }
@@ -57,7 +55,8 @@ class AppSite extends React.Component {
     handleClick() {
         this.setState({
             YTVideo: this.state.YTVideo,
-            showFrame: true
+            showFrame: true,
+            showEmotionPicker: true
         })
     }
 
@@ -72,8 +71,27 @@ class AppSite extends React.Component {
 
     /* Called when a choice is made by the user */
     handlePick(event) {
+
+        let rating = 1;
+
+        if (event.target.value === "Engaging!") {
+            rating = 5;
+        }
+        else if (event.target.value === "Interesting.") {
+            rating = 4;
+        }
+        else if (event.target.value === "Alright. Somewhat Interesting.") {
+            rating = 3;
+        }
+        else if (event.target.value === "Eh, not really meant for me.") {
+            rating = 2;
+        }
+        else if (event.target.value === "Boring.") {
+            rating = 1;
+        }
+
         this.setState({
-            choice: event.target.value
+            choice: rating
         });
 
         return;
@@ -83,12 +101,12 @@ class AppSite extends React.Component {
     handleSubmit() {
         const url = "http://localhost:8080/api/emotion";
 
+        const that = this;
+
         const data = {
             "videoID": this.state.YTVideo,
             "emotion": this.state.choice
         };
-
-        console.log("Working !_!");
 
         fetch(url, {
             credentials: 'same-origin',
@@ -100,18 +118,9 @@ class AppSite extends React.Component {
             }
         }).then(function(response) {
 
-            if (response.status === 500) {
-                // that.setState({
-                //     showResult: true,
-                //     resultText: "Error Registering"
-                // });
-            }
-            else {
-                // that.setState({
-                //     showResult: true,
-                //     resultText: "Registration Successful"
-                // });
-            }
+            that.setState({
+                showEmotionPicker: false
+            });
 
             console.log(response);
         })
@@ -124,11 +133,11 @@ class AppSite extends React.Component {
                         <Form.Group>
                             <Form.Label>How did you feel about this video?</Form.Label>
                             <Form.Control as="select" onChange = {this.handlePick}>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option>Engaging!</option>
+                                <option>Interesting.</option>
+                                <option>Alright. Somewhat Interesting.</option>
+                                <option>Eh, not really meant for me.</option>
+                                <option>Boring.</option>
                             </Form.Control>
                         </Form.Group>
 
