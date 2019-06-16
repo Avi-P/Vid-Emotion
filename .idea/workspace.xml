@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server-src/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="209" column="37" selection-start-line="209" selection-start-column="37" selection-end-line="209" selection-end-column="37" />
+            <state relative-caret-position="-840">
+              <caret line="167" lean-forward="true" selection-start-line="167" selection-end-line="167" />
               <folding>
                 <element signature="e#315#349#0" />
                 <element signature="e#538#563#0" />
@@ -37,7 +37,6 @@
                 <element signature="e#3053#3105#0" />
                 <element signature="e#3109#3123#0" />
                 <element signature="e#3182#3257#0" />
-                <element signature="e#4618#5604#0" />
                 <element signature="e#4805#4909#0" />
                 <element signature="e#3813#3866#0" />
               </folding>
@@ -54,29 +53,30 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sites/App_Site/App_Site.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Sites/Analytics/Analytics.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="73" />
+            <state relative-caret-position="128">
+              <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
               <folding>
-                <element signature="n#!!block;n#constructor#0;n#AppSite#0" />
-                <element signature="n#!!block;n#handleChange#0;n#AppSite#0" />
-                <element signature="n#!!block;n#handleClick#0;n#AppSite#0" />
-                <element signature="n#!!block;n#handleVideoEnd#0;n#AppSite#0" />
-                <element signature="n#!!block;n#handlePick#0;n#AppSite#0" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Sites/Analytics/Analytics.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sites/App_Site/App_Site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+            <state relative-caret-position="-4">
+              <caret line="183" column="9" lean-forward="true" selection-start-line="183" selection-start-column="9" selection-end-line="183" selection-end-column="9" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+                <element signature="n#!!block;n#handleChange#0;n#AppSite#0" />
+                <element signature="n#!!block;n#handleClick#0;n#AppSite#0" />
+                <element signature="n#!!block;n#handleVideoEnd#0;n#AppSite#0" />
+                <element signature="n#!!block;n#handlePick#0;n#AppSite#0" />
+                <element signature="n#!!block;n#handleSubmit#0;n#AppSite#0" />
               </folding>
             </state>
           </provider>
@@ -128,16 +128,16 @@
         <option value="$PROJECT_DIR$/server-src/Database Design.txt" />
         <option value="$PROJECT_DIR$/server-src/authMiddleware.js" />
         <option value="$PROJECT_DIR$/server-src/VideoUserLink.js" />
-        <option value="$PROJECT_DIR$/src/Sites/App_Site/App_Site.js" />
         <option value="$PROJECT_DIR$/src/Components/withAuth.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/server-src/server.js" />
+        <option value="$PROJECT_DIR$/src/Sites/App_Site/App_Site.js" />
         <option value="$PROJECT_DIR$/src/Sites/Analytics/Analytics.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="272" />
+    <option name="x" value="-542" />
     <option name="y" value="-13" />
     <option name="width" value="1934" />
     <option name="height" value="304" />
@@ -208,7 +208,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560405795737" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560667688377" />
     <property name="js.last.introduce.type" value="LET" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Interesting CS Stuff/REST API NODE" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -259,18 +259,18 @@
       <workItem from="1558329775255" duration="16597000" />
       <workItem from="1558504311605" duration="592000" />
       <workItem from="1558510937459" duration="13073000" />
-      <workItem from="1558661914825" duration="112077000" />
+      <workItem from="1558661914825" duration="118542000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144000000" />
+    <option name="totallyTimeSpent" value="150465000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1445946" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14932433" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -279,7 +279,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932432" weight="0.32991204" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932432" visible="true" weight="0.1510264" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932432" visible="true" weight="0.24193548" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -520,13 +520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server-src/Database Design.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="22" column="15" lean-forward="true" selection-start-line="22" selection-start-column="15" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-434" />
@@ -538,20 +531,6 @@
           <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sites/App_Site/App_Site.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="73" />
-          <folding>
-            <element signature="n#!!block;n#constructor#0;n#AppSite#0" />
-            <element signature="n#!!block;n#handleChange#0;n#AppSite#0" />
-            <element signature="n#!!block;n#handleClick#0;n#AppSite#0" />
-            <element signature="n#!!block;n#handleVideoEnd#0;n#AppSite#0" />
-            <element signature="n#!!block;n#handlePick#0;n#AppSite#0" />
           </folding>
         </state>
       </provider>
@@ -586,10 +565,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server-src/Database Design.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="22" column="15" lean-forward="true" selection-start-line="22" selection-start-column="15" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server-src/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="209" column="37" selection-start-line="209" selection-start-column="37" selection-end-line="209" selection-end-column="37" />
+        <state relative-caret-position="-840">
+          <caret line="167" lean-forward="true" selection-start-line="167" selection-end-line="167" />
           <folding>
             <element signature="e#315#349#0" />
             <element signature="e#538#563#0" />
@@ -609,17 +595,31 @@
             <element signature="e#3053#3105#0" />
             <element signature="e#3109#3123#0" />
             <element signature="e#3182#3257#0" />
-            <element signature="e#4618#5604#0" />
             <element signature="e#4805#4909#0" />
             <element signature="e#3813#3866#0" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sites/App_Site/App_Site.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4">
+          <caret line="183" column="9" lean-forward="true" selection-start-line="183" selection-start-column="9" selection-end-line="183" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="n#!!block;n#handleChange#0;n#AppSite#0" />
+            <element signature="n#!!block;n#handleClick#0;n#AppSite#0" />
+            <element signature="n#!!block;n#handleVideoEnd#0;n#AppSite#0" />
+            <element signature="n#!!block;n#handlePick#0;n#AppSite#0" />
+            <element signature="n#!!block;n#handleSubmit#0;n#AppSite#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sites/Analytics/Analytics.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+        <state relative-caret-position="128">
+          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

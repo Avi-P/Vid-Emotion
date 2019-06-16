@@ -198,6 +198,7 @@ app.get('/api/emotion/summary', authMiddleware, async  function(req, res) {
                                               }
                                     }
     ], function(err, result) {
+        res.send(result);
         console.log(JSON.stringify(result));
     });
     //console.log(JSON.stringify(query));
@@ -209,6 +210,7 @@ app.get('/api/emotion/history', authMiddleware, async  function(req, res) {
     let query = VideoUserLink.aggregate([
         { $match: { username: req.username} }
     ], function(err, result) {
+        res.send(result);
         console.log(JSON.stringify(result));
     });
     //console.log(JSON.stringify(query));
