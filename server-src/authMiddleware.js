@@ -5,7 +5,7 @@ const secret = "FillerSecret";
 const authMiddleware = function(req, res, next) {
     const token = req.headers['authorization'];
     //console.log(req);
-    console.log("Token: " + token);
+    //console.log("Token: " + token);
 
     if (!token) {
         res.status(401).send("No Token!");

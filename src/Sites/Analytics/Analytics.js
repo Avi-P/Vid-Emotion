@@ -1,27 +1,30 @@
 import React from 'react';
 
 import NavigationBar from "../../Components/NavigationBar.js";
-import Button from "react-bootstrap/Button"
 import Table from "react-bootstrap/Table"
+import Tabs from "react-bootstrap/Tabs"
+import Tab from "react-bootstrap/Tab"
 
 import AuthenticationHelper from "../../Components/AuthenticationHelper";
 
+import "./Analytics.css"
+
 /* Analytics page, WIP */
 class Analytics extends React.Component {
+
+    /* Constructor and contains state */
     constructor(props) {
         super(props);
-
-        this.handleSummarySubmit = this.handleSummarySubmit.bind(this);
-        this.handleHistorySubmit = this.handleHistorySubmit.bind(this);
 
         this.state = {
             summary : [],
             history : [],
-            showHistory: false
+            key: 'Summary',
         }
     }
 
-    handleSummarySubmit() {
+    /* Request to API, gets back summary data */
+    handleSummaryData() {
         const url = "http://localhost:8080/api/emotion/summary";
 
         let that = this;
@@ -43,7 +46,8 @@ class Analytics extends React.Component {
         });
     }
 
-    handleHistorySubmit() {
+    /* Request to API, gets back history data */
+    handleHistoryData() {
         const url = "http://localhost:8080/api/emotion/history";
 
         let that = this;
@@ -58,7 +62,7 @@ class Analytics extends React.Component {
         }).then(function(response) {
             return response.json();
         }).then(function(res){
-            console.log(res);
+            //console.log(res);
            that.setState({
                history: res,
                showHistory: true
@@ -66,87 +70,92 @@ class Analytics extends React.Component {
         });
     }
 
+    /* Makes table using history data from api */
     makeHistoryList() {
         if (this.state.history !== "") {
             let data = [];
 
-            //console.log(this.state.history);
-
-            for (let i = 0; i < this.state.history.length; i++) {
+            for (let i = this.state.history.length - 1; i >= 0; i--) {
                 data.push(<tr>
                     <td> {this.state.history[i].videoID} </td>
                     <td> {this.state.history[i].videoName} </td>
                     <td> {this.state.history[i].topic} </td>
                     <td> {this.state.history[i].rating} </td>
                 </tr>);
-
-                console.log(this.state.history[i]);
             }
 
             return <div>
-                <Table striped bordered hover>
+                <Table id = "table" striped bordered hover>
                     <thead>
-                    <tr>
-                        <th>Video ID</th>
-                        <th>Video Name</th>
-                        <th>Category</th>
-                        <th>Rating</th>
-                    </tr>
+                        <tr>
+                            <th>Video ID</th>
+                            <th>Video Name</th>
+                            <th>Category</th>
+                            <th>Rating</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    {data}
+                        {data}
                     </tbody>
                 </Table>
             </div>;
         }
     }
 
+    /* Makes table using summary data from API */
     makeSummaryList() {
         if (this.state.summary !== "") {
             let data = [];
-
-            //console.log(this.state.history);
 
             for (let i = 0; i < this.state.summary.length; i++) {
                 data.push(<tr>
                     <td> {this.state.summary[i]._id} </td>
                     <td> {this.state.summary[i].avg.toFixed(2)} </td>
                 </tr>);
-
-                //console.log(this.state.summary[i]);
             }
 
             return <div>
-                <Table striped bordered hover>
+                <Table id = "table" striped bordered hover>
                     <thead>
-                    <tr>
-                        <th>Category Name</th>
-                        <th>Rating</th>
-                    </tr>
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Rating</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    {data}
+                        {data}
                     </tbody>
                 </Table>
             </div>;
         }
     }
 
-    render() {
-        let summaryTable = this.makeHistoryList();
+    /* When Analytics page is shown, makes API request to get data for displaying */
+    componentDidMount() {
+        this.handleHistoryData();
+        this.handleSummaryData();
+    }
 
+    /* Contains HTML code to show */
+    render() {
+
+        let summaryTable = this.makeSummaryList();
+        let historyTable = this.makeHistoryList();
         return (
             <div>
                 <NavigationBar/>
-                < h1 > Analytics </h1>
-                    <Button variant="primary" size="md" block onClick = {this.handleSummarySubmit}>
-                        Summary
-                    </Button>
-                <Button variant="primary" size="md" block onClick = {this.handleHistorySubmit}>
-                    History
-                </Button>
-
-                {summaryTable}
+                <Tabs
+                    id="controlled-tab-example"
+                    activeKey={this.state.key}
+                    onSelect={key => this.setState({ key })}
+                >
+                    <Tab eventKey="Summary" title="Summary">
+                        {summaryTable}
+                    </Tab>
+                    <Tab eventKey="History" title="History">
+                        {historyTable}
+                    </Tab>
+                </Tabs>
             </div>
         )
     }

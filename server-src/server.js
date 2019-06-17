@@ -145,7 +145,7 @@ app.get("/api/checkToken", authMiddleware, function (req, res) {
 
 /* Test api */
 app.get('/api/secret', authMiddleware, function(req, res) {
-    console.log("Secret!");
+    //console.log("Secret!");
     res.send('Token authentication works');
 });
 
@@ -181,7 +181,7 @@ app.post('/api/emotion', authMiddleware, async function(req, res) {
 
     VideoUser.save();
 
-    console.log(JSON.stringify(VideoUser));
+    //console.log(JSON.stringify(VideoUser));
 
     res.send('Submitted');
 
@@ -199,7 +199,7 @@ app.get('/api/emotion/summary', authMiddleware, async  function(req, res) {
                                     }
     ], function(err, result) {
         res.send(result);
-        console.log(JSON.stringify(result));
+        //console.log(JSON.stringify(result));
     });
     //console.log(JSON.stringify(query));
 
@@ -211,7 +211,7 @@ app.get('/api/emotion/history', authMiddleware, async  function(req, res) {
         { $match: { username: req.username} }
     ], function(err, result) {
         res.send(result);
-        console.log(JSON.stringify(result));
+        //console.log(JSON.stringify(result));
     });
     //console.log(JSON.stringify(query));
 
