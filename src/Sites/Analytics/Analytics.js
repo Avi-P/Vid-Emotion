@@ -74,11 +74,46 @@ class Analytics extends React.Component {
 
             for (let i = 0; i < this.state.history.length; i++) {
                 data.push(<tr>
+                    <td> {this.state.history[i].videoID} </td>
+                    <td> {this.state.history[i].videoName} </td>
                     <td> {this.state.history[i].topic} </td>
                     <td> {this.state.history[i].rating} </td>
                 </tr>);
 
                 console.log(this.state.history[i]);
+            }
+
+            return <div>
+                <Table striped bordered hover>
+                    <thead>
+                    <tr>
+                        <th>Video ID</th>
+                        <th>Video Name</th>
+                        <th>Category</th>
+                        <th>Rating</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {data}
+                    </tbody>
+                </Table>
+            </div>;
+        }
+    }
+
+    makeSummaryList() {
+        if (this.state.summary !== "") {
+            let data = [];
+
+            //console.log(this.state.history);
+
+            for (let i = 0; i < this.state.summary.length; i++) {
+                data.push(<tr>
+                    <td> {this.state.summary[i]._id} </td>
+                    <td> {this.state.summary[i].avg.toFixed(2)} </td>
+                </tr>);
+
+                //console.log(this.state.summary[i]);
             }
 
             return <div>
@@ -98,7 +133,7 @@ class Analytics extends React.Component {
     }
 
     render() {
-        let picker = this.makeHistoryList();
+        let summaryTable = this.makeHistoryList();
 
         return (
             <div>
@@ -111,7 +146,7 @@ class Analytics extends React.Component {
                     History
                 </Button>
 
-                {picker}
+                {summaryTable}
             </div>
         )
     }
