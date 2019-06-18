@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 import AuthenticationHelper from "./AuthenticationHelper"
 
+import Spinner from "react-bootstrap/Spinner"
+
 /* Class to protect components with authentication */
 export default function withAuth(ProtectedComponent) {
     return class extends Component {
@@ -50,7 +52,13 @@ export default function withAuth(ProtectedComponent) {
                 /* Shown while token is checked */
                 return (
                     <React.Fragment>
-                        <h1> Loading </h1>
+                        <div className="auth">\
+                            <center>
+                                <Spinner animation="border" role="status">
+                                    <span className="sr-only">Loading...</span>
+                                </Spinner>
+                            </center>
+                        </div>
                     </React.Fragment>
                 )
             }
@@ -59,7 +67,11 @@ export default function withAuth(ProtectedComponent) {
                 /* Returned if user is not authenticated in */
                 return (
                     <React.Fragment>
-                        <h2> Please go back and log In </h2>
+                        <div className="auth">
+                            <center>
+                                <h2> Please go back and log In </h2>
+                            </center>
+                        </div>
                     </React.Fragment>
                 )
             }

@@ -84,8 +84,8 @@ class Analytics extends React.Component {
                 </tr>);
             }
 
-            return <div>
-                <Table id = "table" striped bordered hover>
+            return <div id = "table">
+                <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>Video ID</th>
@@ -114,8 +114,8 @@ class Analytics extends React.Component {
                 </tr>);
             }
 
-            return <div>
-                <Table id = "table" striped bordered hover>
+            return <div id = "table">
+                <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>Category Name</th>
