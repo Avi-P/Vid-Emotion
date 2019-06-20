@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button"
 import InputGroup from "react-bootstrap/InputGroup"
 import Form from "react-bootstrap/Form"
 import YouTube from "react-youtube"
+import Webcam from "react-webcam";
 
 import "./App_Site.css"
 import AuthenticationHelper from "../../Components/AuthenticationHelper";
@@ -23,12 +24,18 @@ class AppSite extends React.Component {
         this.handleVideoEnd = this.handleVideoEnd.bind(this);
         this.handlePick = this.handlePick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.setCamera = this.setCamera.bind(this);
+        this.capture = this.capture.bind(this);
+        this.startCapture = this.startCapture.bind(this);
+        this.stopCapture = this.stopCapture.bind(this);
 
         this.state = {
             YTVideo: "",
             showFrame: false,
             showEmotionPicker: true,
-            choice: 1
+            choice: 1,
+            images : [],
+            interval : ""
         };
     }
 
@@ -62,6 +69,8 @@ class AppSite extends React.Component {
 
     /* Called when video ends, used to update state to show more components for rest of application */
     handleVideoEnd() {
+        this.stopCapture();
+
         this.setState({
             YTVideo: this.state.YTVideo,
             showFrame: this.state.showFrame,
@@ -170,6 +179,7 @@ class AppSite extends React.Component {
                 <YouTube
                     videoId = {this.state.YTVideo}
                     opts = {options}
+                    onReady = {this.startCapture}
                     onEnd = {this.handleVideoEnd}
                 />);
 
@@ -187,6 +197,45 @@ class AppSite extends React.Component {
         }
     }
 
+    /* Maps this.camera to camera object */
+    setCamera(webcam) {
+        this.webcam = webcam;
+    }
+
+    /* Captures an image from the camera and saves it to state array */
+    async capture() {
+        const img = this.webcam.getScreenshot();
+
+        console.log("Image Captured");
+
+        let imagesArr = this.state.images;
+        imagesArr.push(img);
+
+        this.setState({
+            images: imagesArr
+        })
+    }
+
+    /* Used to start a service that will capture an image every 30 seconds */
+    startCapture() {
+        let interval = setInterval(this.capture, 30000);
+
+        this.setState({
+            interval: interval
+        })
+    }
+
+    /* Stops interval capture */
+    stopCapture() {
+        clearInterval(this.state.interval);
+
+        console.log("Stopping Capture");
+
+        this.setState({
+            interval: ""
+        })
+    }
+
     /* Contains code for what is shown on screen */
     render() {
         let frame = this.showFrameFunc();
@@ -195,6 +244,19 @@ class AppSite extends React.Component {
         return (
             <div>
                 <NavigationBar/>
+
+                <Webcam className="YTFrame"
+                        audio={false}
+                        height={350}
+                        ref={this.setCamera}
+                        screenshotFormat="image/jpeg"
+                        width={350}
+                />
+
+                <Button variant="primary" size="md" block onClick = {this.capture}>
+                    Submit
+                </Button>
+
                 <InputGroup className="linkForm">
                     <InputGroup.Prepend>
                         <InputGroup.Text> youtu.be/</InputGroup.Text>
