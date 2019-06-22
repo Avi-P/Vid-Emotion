@@ -64,6 +64,7 @@ export default function withAuth(ProtectedComponent) {
             }
             if (redirect) {
 
+                AuthenticationHelper.removeToken();
                 /* Returned if user is not authenticated in */
                 return (
                     <React.Fragment>

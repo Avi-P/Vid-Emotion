@@ -1,15 +1,18 @@
 import React from 'react';
 
 import NavigationBar from "../../Components/NavigationBar.js";
+import AuthenticationHelper from "../../Components/AuthenticationHelper";
+
 import FormControl from "react-bootstrap/FormControl"
 import Button from "react-bootstrap/Button"
 import InputGroup from "react-bootstrap/InputGroup"
 import Form from "react-bootstrap/Form"
+import Carousel from 'react-bootstrap/Carousel'
+
 import YouTube from "react-youtube"
 import Webcam from "react-webcam";
 
 import "./App_Site.css"
-import AuthenticationHelper from "../../Components/AuthenticationHelper";
 
 /* Application Site */
 class AppSite extends React.Component {
@@ -185,10 +188,68 @@ class AppSite extends React.Component {
 
             //console.log(YouTubePlayer.props.internalPlayer);
 
-            return <div className = "YTFrame">
-                {YouTubePlayer}
+            return <div>
 
-                {picker}
+                <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+
+                        <div className="inline">
+
+                            {YouTubePlayer}
+
+                            <Webcam
+                                    audio={false}
+                                    height={480}
+                                    ref={this.setCamera}
+                                    screenshotFormat="image/jpeg"
+                                    width={720}
+                            />
+                        </div>
+
+                </div>
+
+                <div className = "images">
+                    <Carousel>
+                        <Carousel.Item>
+                            <img
+                                className="d-block w-100"
+                                src={this.state.images[0]}
+                                alt="First slide"
+                            />
+                            <Carousel.Caption>
+                                <h3>First slide label</h3>
+                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                                className="d-block w-100"
+                                src="holder.js/800x400?text=Second slide&bg=282c34"
+                                alt="Third slide"
+                            />
+
+                            <Carousel.Caption>
+                                <h3>Second slide label</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                                className="d-block w-100"
+                                src="holder.js/800x400?text=Third slide&bg=20232a"
+                                alt="Third slide"
+                            />
+
+                            <Carousel.Caption>
+                                <h3>Third slide label</h3>
+                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    </Carousel>
+                </div>
+
+                <div className = "picker">
+                    {picker}
+                </div>
 
             </div>;
         }
@@ -244,18 +305,6 @@ class AppSite extends React.Component {
         return (
             <div>
                 <NavigationBar/>
-
-                <Webcam className="YTFrame"
-                        audio={false}
-                        height={350}
-                        ref={this.setCamera}
-                        screenshotFormat="image/jpeg"
-                        width={350}
-                />
-
-                <Button variant="primary" size="md" block onClick = {this.capture}>
-                    Submit
-                </Button>
 
                 <InputGroup className="linkForm">
                     <InputGroup.Prepend>

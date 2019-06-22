@@ -5,7 +5,20 @@
     padding-left: 100px;
 }
 
-.YTFrame {
+.picker {
     margin: auto;
     width: 50%;
+    padding-top: 30px;
+}
+
+.inline {
+    padding-left: 45px;
+    display: inline-flex;
+    flex-direction: row;
+    justifyContent: 'center';
+}
+
+.middle {
+    display: flex;
+    justifyContent: center;
 }
