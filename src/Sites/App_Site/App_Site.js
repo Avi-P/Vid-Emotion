@@ -37,8 +37,10 @@ class AppSite extends React.Component {
             showFrame: false,
             showEmotionPicker: true,
             choice: 1,
+            imagesIn : false,
             images : [],
-            interval : ""
+            interval : "",
+            submitted : false
         };
     }
 
@@ -111,6 +113,7 @@ class AppSite extends React.Component {
 
     /* POSTs to API to save the data in db */
     handleSubmit() {
+
         const url = "http://localhost:8080/api/emotion";
 
         const that = this;
@@ -131,7 +134,7 @@ class AppSite extends React.Component {
         }).then(function(response) {
 
             that.setState({
-                showEmotionPicker: false
+                submitted : true
             });
 
             console.log(response);
@@ -141,24 +144,58 @@ class AppSite extends React.Component {
     /* Shows emotion picker */
     showEmotionPicker() {
         if (this.state.showEmotionPicker) {
-            return <div>
-                        <Form.Group>
-                            <Form.Label>How did you feel about this video?</Form.Label>
-                            <Form.Control as="select" onChange = {this.handlePick}>
-                                <option>Engaging!</option>
-                                <option>Interesting.</option>
-                                <option>Alright. Somewhat Interesting.</option>
-                                <option>Eh, not really meant for me.</option>
-                                <option>Boring.</option>
-                            </Form.Control>
-                        </Form.Group>
+            if (!this.state.submitted) {
+                return <div>
+                    <Form.Group>
+                        <Form.Label>How did you feel about this video?</Form.Label>
+                        <Form.Control as="select" onChange={this.handlePick}>
+                            <option>Engaging!</option>
+                            <option>Interesting.</option>
+                            <option>Alright. Somewhat Interesting.</option>
+                            <option>Eh, not really meant for me.</option>
+                            <option>Boring.</option>
+                        </Form.Control>
+                    </Form.Group>
 
-                        <div className="PickButton">
-                            <Button variant="primary" size="md" block onClick = {this.handleSubmit}>
-                                Submit
-                            </Button>
-                        </div>
+                    <div className="PickButton">
+                        <Button variant="primary" size="md" block onClick={this.handleSubmit}>
+                            Submit
+                        </Button>
+                    </div>
                 </div>;
+            }
+            else {
+                return <div>
+                    <center>
+                        <h2> Submitted </h2>
+                    </center>
+                </div>
+            }
+        }
+    }
+
+    /* Generates a carousel component with images */
+    generateCarousel() {
+        if (this.state.imagesIn === true) {
+            let data = [];
+
+            for (let i = this.state.images.length - 1; i >= 0; i--) {
+                data.push(
+                    <Carousel.Item>
+                        <img
+                            src={this.state.images[i]}
+                        />
+                    </Carousel.Item>
+                )
+            }
+
+            return (<div className = "images">
+                <h2> <center> Images for help: </center> </h2>
+                <Carousel>
+                    {data}
+                </Carousel>
+            </div>)
+
 
         }
     }
@@ -167,6 +204,8 @@ class AppSite extends React.Component {
     showFrameFunc() {
         let picker = this.showEmotionPicker();
 
+        let carousel = this.generateCarousel();
+
         /* Options for YouTube video */
         const options = {
             height: '480',
@@ -174,6 +213,12 @@ class AppSite extends React.Component {
             playerVars: {
                 autoplay: 1
             }
+        };
+
+        const videoConstraints = {
+            width: 720,
+            height: 480,
+            facingMode: "user"
         };
 
         if (this.state.showFrame) {
@@ -185,8 +230,6 @@ class AppSite extends React.Component {
                     onReady = {this.startCapture}
                     onEnd = {this.handleVideoEnd}
                 />);
-
-            //console.log(YouTubePlayer.props.internalPlayer);
 
             return <div>
 
@@ -201,51 +244,14 @@ class AppSite extends React.Component {
                                     height={480}
                                     ref={this.setCamera}
                                     screenshotFormat="image/jpeg"
+                                    videoConstraints={videoConstraints}
                                     width={720}
                             />
                         </div>
 
                 </div>
 
-                <div className = "images">
-                    <Carousel>
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100"
-                                src={this.state.images[0]}
-                                alt="First slide"
-                            />
-                            <Carousel.Caption>
-                                <h3>First slide label</h3>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100"
-                                src="holder.js/800x400?text=Second slide&bg=282c34"
-                                alt="Third slide"
-                            />
-
-                            <Carousel.Caption>
-                                <h3>Second slide label</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100"
-                                src="holder.js/800x400?text=Third slide&bg=20232a"
-                                alt="Third slide"
-                            />
-
-                            <Carousel.Caption>
-                                <h3>Third slide label</h3>
-                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                    </Carousel>
-                </div>
+                {carousel}
 
                 <div className = "picker">
                     {picker}
@@ -273,6 +279,7 @@ class AppSite extends React.Component {
         imagesArr.push(img);
 
         this.setState({
+            imagesIn: true,
             images: imagesArr
         })
     }
