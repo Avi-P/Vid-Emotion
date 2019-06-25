@@ -46,6 +46,7 @@ class NavigationBar extends React.Component {
         })
     }
 
+    /* Used to toggle the settings modal */
     showSetting() {
         this.setState({
             settingShow: true
@@ -54,6 +55,8 @@ class NavigationBar extends React.Component {
 
     /* Shows login button or logout button depending on whether user has JWT token */
     showLoginOrLogOut() {
+
+        /* Only checking if user has a token, no token validation */
         {if (AuthenticationHelper.getToken() != null) {
             return (<Dropdown>
                 <Dropdown.Toggle variant="outline-primary" id="dropdown-basic">
@@ -81,7 +84,7 @@ class NavigationBar extends React.Component {
         return (
             <>
                 <Navbar bg="light" expand="lg">
-                    <Navbar.Brand href="/">WIP</Navbar.Brand>
+                    <Navbar.Brand href="/">Vid-Emotions</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">

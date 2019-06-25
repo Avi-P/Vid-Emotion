@@ -7,8 +7,10 @@ import AuthenticationHelper from "./AuthenticationHelper";
 
 import "./SettingsPage.css"
 
+/* Settings page which holds the options to change passwords */
 class SettingsPage extends React.Component {
 
+    /* Contains state variables and bindings */
     constructor(props) {
         super(props);
 
@@ -25,20 +27,21 @@ class SettingsPage extends React.Component {
         }
     }
 
+    /* Updates state oldPassword variable as password changes */
     handleOldPasswordChange(event) {
         this.setState({
             OldPassword: event.target.value,
         })
     }
 
-    /* Updates state password variable as username changes */
+    /* Updates state password variable as password changes */
     handlePasswordChange(event) {
         this.setState({
             Password: event.target.value,
         })
     }
 
-    /* Updates state confirm password variable as username changes */
+    /* Updates state confirm password variable as password changes */
     handleConfirmPasswordChange(event) {
         this.setState({
             ConfirmPassword: event.target.value
@@ -87,7 +90,7 @@ class SettingsPage extends React.Component {
         }
     }
 
-    /* Performs HTTP Request to do registration in the mongodb */
+    /* Performs HTTP Request to do change password in the mongodb */
     change() {
         let that = this;
 
@@ -126,8 +129,6 @@ class SettingsPage extends React.Component {
                     resultText: "Password Change Successful"
                 });
             }
-
-            console.log(response);
         })
     }
 
@@ -135,7 +136,7 @@ class SettingsPage extends React.Component {
     showButton() {
         if (this.state.PasswordGood === true) {
             return (
-                <div className="loginButton">
+                <div className="submitButton">
                     <Button variant="primary" size="md" block onClick={this.change}>
                         Change Password
                     </Button>
@@ -144,7 +145,7 @@ class SettingsPage extends React.Component {
         }
         else {
             return (
-                <div className="loginButton">
+                <div className="submitButton">
                     <Button variant="primary" size="md" block disabled>
                         Change Password
                     </Button>
@@ -153,6 +154,7 @@ class SettingsPage extends React.Component {
         }
     }
 
+    /* Method that contains HTML for user */
     render() {
         return (
             <>

@@ -9,7 +9,7 @@ import AuthenticationHelper from "../../Components/AuthenticationHelper";
 
 import "./Analytics.css"
 
-/* Analytics page, WIP */
+/* Analytics page */
 class Analytics extends React.Component {
 
     /* Constructor and contains state */
@@ -39,7 +39,6 @@ class Analytics extends React.Component {
         }).then(function(response) {
             return response.json();
         }).then(function(res){
-            console.log(res);
             that.setState({
                 summary : res
             });
@@ -75,6 +74,7 @@ class Analytics extends React.Component {
         if (this.state.history !== "") {
             let data = [];
 
+            /* For loop to make the table contents from the api response */
             for (let i = this.state.history.length - 1; i >= 0; i--) {
                 data.push(<tr>
                     <td> {this.state.history[i].videoID} </td>
@@ -84,6 +84,7 @@ class Analytics extends React.Component {
                 </tr>);
             }
 
+            /* Returns the table HTML code */
             return <div id = "table">
                 <Table striped bordered hover>
                     <thead>
@@ -107,6 +108,7 @@ class Analytics extends React.Component {
         if (this.state.summary !== "") {
             let data = [];
 
+            /* For loop to make table from api response */
             for (let i = 0; i < this.state.summary.length; i++) {
                 data.push(<tr>
                     <td> {this.state.summary[i]._id} </td>
@@ -114,6 +116,7 @@ class Analytics extends React.Component {
                 </tr>);
             }
 
+            /* Returns table HTML code */
             return <div id = "table">
                 <Table striped bordered hover>
                     <thead>
@@ -138,9 +141,9 @@ class Analytics extends React.Component {
 
     /* Contains HTML code to show */
     render() {
-
         let summaryTable = this.makeSummaryList();
         let historyTable = this.makeHistoryList();
+
         return (
             <div>
                 <NavigationBar/>
@@ -160,6 +163,5 @@ class Analytics extends React.Component {
         )
     }
 }
-
 
 export default Analytics;

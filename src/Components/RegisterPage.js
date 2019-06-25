@@ -50,6 +50,8 @@ class RegisterPage extends React.Component {
             Password: this.state.Password,
             ConfirmPassword: event.target.value
         }, () => {
+
+            //Callback is used to ensure this code happens sequentially */
             if (this.checkPassword() === "✓" && String(this.state.Password) === String(this.state.ConfirmPassword)) {
                 this.setState({
                     PasswordGood: true
@@ -63,7 +65,7 @@ class RegisterPage extends React.Component {
         });
     }
 
-    /* Checks if password meets security requirement */
+    /* Checks if password meets security requirement. Basic reqs, can be made tougher */
     checkPassword() {
         if (String(this.state.Password).length >= 8) {
             return "✓";
@@ -154,8 +156,6 @@ class RegisterPage extends React.Component {
                     resultText: "Registration Successful"
                 });
             }
-
-            console.log(response);
         })
     }
 
@@ -192,7 +192,6 @@ class RegisterPage extends React.Component {
 
                 {this.state.showResult && <h3 className="resultText"> {this.state.resultText} </h3>}
             </>
-
         )
     }
 }

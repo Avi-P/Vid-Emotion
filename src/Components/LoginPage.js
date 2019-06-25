@@ -45,8 +45,7 @@ class LoginPage extends React.Component {
         })
     }
 
-    /* Called when login button is pressed. HTTP Request to login and calls
-        method to save JWT token */
+    /* Called when login button is pressed. HTTP Request to login and calls a method to save JWT token */
     login() {
             const url = "http://localhost:8080/api/login";
 
@@ -57,6 +56,7 @@ class LoginPage extends React.Component {
                 "password": this.state.Password
             };
 
+            //Fetching with API
             fetch(url, {
                 credentials: 'same-origin',
                 method: 'POST',
@@ -85,6 +85,7 @@ class LoginPage extends React.Component {
                     return;
                 }
 
+                //Calling method to store returned token into local storage
                 AuthenticationHelper.setToken(response.token);
 
                 that.setState({
@@ -92,10 +93,7 @@ class LoginPage extends React.Component {
                     resultText: "Login Successful"
                 });
 
-                console.log(response);
-
                 return Promise.resolve(response);
-
             });
 
     }
@@ -103,8 +101,6 @@ class LoginPage extends React.Component {
     /* Test HTTP Request to check if token authentication works */
     test() {
         const url = "http://localhost:8080/api/secret";
-
-        console.log("Bearer " + AuthenticationHelper.getToken());
 
         fetch(url, {
             credentials: 'same-origin',
@@ -114,9 +110,8 @@ class LoginPage extends React.Component {
                 'Authorization': "Bearer " + AuthenticationHelper.getToken(),
             }
         }).then(function(response) {
-            console.log(response.text());
-        });
 
+        });
     }
 
     /* Contains what is shown on the page */

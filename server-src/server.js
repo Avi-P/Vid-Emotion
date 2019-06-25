@@ -2,22 +2,27 @@ const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const Users = require("./Users.js");
 const jwt = require('jsonwebtoken');
-const authMiddleware = require('./authMiddleware');
+
+const Users = require("./Users.js");
 const VideoUserLink = require("./VideoUserLink.js");
+
+const authMiddleware = require('./authMiddleware');
 
 const app = express();
 
-/* Secret for JWT Token signing */
+/* Secret for JWT Token signing. Basic secret, can/should be changed to something more 'cryptic' */
 const secret = "FillerSecret";
 
+/* Middleware */
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+/* URL for mongo db */
 const mongo_url = 'mongodb://localhost/userdb';
 
+/* Categories and their IDs. Can also be done using YouTube apis but network request slowdown */
 let categoryID = [];
 categoryID[1] = "Film & Animation";
 categoryID[2] = "Autos & Vehicles";
@@ -71,11 +76,13 @@ app.use(function(req, res, next) {
     next();
 });
 
+/* API to change password for a user */
 app.post('/api/changePassword', authMiddleware, async function(req, res) {
     const {oldPassword, newPassword} = req.body;
 
     let username = req.username;
 
+    /* Finds record for corresponding user */
     Users.findOne({username}, function(err, user) {
         if (err) {
             console.log("Change: Internal Error");
@@ -90,6 +97,8 @@ app.post('/api/changePassword', authMiddleware, async function(req, res) {
             })
         }
         else {
+
+            /* Checks if oldPassword is the correct password */
             user.isCorrectPassword(oldPassword, function(err, same) {
 
                 if (err) {
@@ -105,10 +114,12 @@ app.post('/api/changePassword', authMiddleware, async function(req, res) {
                     })
                 }
                 else {
+
                     /* Deleting user from table then in callback adding with new password */
                     Users.deleteOne({ _id: user._id }, function() {
                         const UpdatedUser = new Users({username: username, password: newPassword});
 
+                        /* Saving new password into DB */
                         UpdatedUser.save(function(err) {
                             if (err) {
                                 console.log(err);
@@ -135,13 +146,14 @@ app.post('/api/register', function(req, res) {
 
     const user = new Users({username, password});
 
+    /* Saving user and password into db */
     user.save(function(err) {
         if (err) {
             console.log("Registration: Internal Error");
             res.status(500).send("Error registering!");
         }
         else {
-            console.log("Registration: " + username + "  registered.");
+            console.log("Registration: " + username + " registered.");
             res.status(200).send("User registered!");
         }
     });
@@ -151,6 +163,7 @@ app.post('/api/register', function(req, res) {
 app.post("/api/login", function(req, res) {
     const {username, password} = req.body;
 
+    /* Finds record in db for username */
     Users.findOne({username}, function(err, user) {
         if (err) {
             console.log("Login: Internal Error");
@@ -165,6 +178,8 @@ app.post("/api/login", function(req, res) {
             })
         }
         else {
+
+            /* Checks if password the stored password in the db */
             user.isCorrectPassword(password, function(err, same) {
                 if (err) {
                     console.log("Login: Internal Error");
@@ -179,9 +194,10 @@ app.post("/api/login", function(req, res) {
                     })
                 }
                 else {
-                    /* Token Stuff */
+
                     const payload = {username};
 
+                    /* Creation of token*/
                     const token = jwt.sign(payload, secret, {
                         expiresIn: '24h'
                     });
@@ -197,8 +213,7 @@ app.post("/api/login", function(req, res) {
 
 /* Method to check if a token is valid */
 app.get("/api/checkToken", authMiddleware, function (req, res) {
-    //console.log(req.username);
-    res.status(200).send("Token thingie works");
+    res.status(200).send("Token validated");
 });
 
 /* API to save emotion data in to db */
@@ -206,11 +221,14 @@ app.post('/api/emotion', authMiddleware, async function(req, res) {
 
     const fetch = require('node-fetch');
 
+    const YouTubeAPIKey = "AIzaSyAcZQ3cGxRxLPwEIPGfpr_jfbkoB06kxig"; //Should be in ENV variables */
+
     let url = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id="
                 + req.body.videoID
                 + "&regionCode=US&key="
-                + "AIzaSyAcZQ3cGxRxLPwEIPGfpr_jfbkoB06kxig";
+                + YouTubeAPIKey;
 
+    /* Fetch to get information about YouTube video */
     let response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -220,6 +238,7 @@ app.post('/api/emotion', authMiddleware, async function(req, res) {
 
     let data = await response.json();
 
+    /* Gets various data from the YouTube api response*/
     const VideoUser = new VideoUserLink(
         {
             username: req.username.toString(),
@@ -231,6 +250,7 @@ app.post('/api/emotion', authMiddleware, async function(req, res) {
         }
     );
 
+    /* Saving to db */
     VideoUser.save();
 
     res.send('Submitted');

@@ -47,6 +47,7 @@ class AppSite extends React.Component {
     /* Updates state with value of the form for YouTube video link */
     handleChange(event) {
 
+        /* Handles case where video tag is removed */
         if (event.target.value === "") {
             this.setState({
                 YTVideo: event.target.value,
@@ -55,7 +56,6 @@ class AppSite extends React.Component {
 
             return;
         }
-
 
         this.setState({
             YTVideo: event.target.value,
@@ -72,7 +72,8 @@ class AppSite extends React.Component {
         })
     }
 
-    /* Called when video ends, used to update state to show more components for rest of application */
+    /* Called when video ends, used to update state to show more components for rest of
+     * and stop picture capturing */
     handleVideoEnd() {
         this.stopCapture();
 
@@ -86,7 +87,7 @@ class AppSite extends React.Component {
     /* Called when a choice is made by the user */
     handlePick(event) {
 
-        let rating = 1;
+        let rating = 5;
 
         if (event.target.value === "Engaging!") {
             rating = 5;
@@ -136,8 +137,6 @@ class AppSite extends React.Component {
             that.setState({
                 submitted : true
             });
-
-            console.log(response);
         })
     }
 
@@ -179,6 +178,7 @@ class AppSite extends React.Component {
         if (this.state.imagesIn === true) {
             let data = [];
 
+            /* Forms carousel content using the images stored in state array */
             for (let i = this.state.images.length - 1; i >= 0; i--) {
                 data.push(
                     <Carousel.Item>
@@ -189,14 +189,13 @@ class AppSite extends React.Component {
                 )
             }
 
+            /* Returns carousel code */
             return (<div className = "images">
                 <h2> <center> Images for help: </center> </h2>
                 <Carousel>
                     {data}
                 </Carousel>
             </div>)
-
-
         }
     }
 
@@ -223,6 +222,7 @@ class AppSite extends React.Component {
 
         if (this.state.showFrame) {
 
+            /* Making the YouTube player */
             let YouTubePlayer = (
                 <YouTube
                     videoId = {this.state.YTVideo}
@@ -273,8 +273,6 @@ class AppSite extends React.Component {
     async capture() {
         const img = this.webcam.getScreenshot();
 
-        console.log("Image Captured");
-
         let imagesArr = this.state.images;
         imagesArr.push(img);
 
@@ -296,8 +294,6 @@ class AppSite extends React.Component {
     /* Stops interval capture */
     stopCapture() {
         clearInterval(this.state.interval);
-
-        console.log("Stopping Capture");
 
         this.setState({
             interval: ""

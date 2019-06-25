@@ -1,11 +1,9 @@
 const jwt = require("jsonwebtoken");
-const secret = "FillerSecret";
+const secret = "FillerSecret";  //Secret token
 
 /* Middleware that checks if the JWT token is valid before continuing onto rest of the request */
 const authMiddleware = function(req, res, next) {
     const token = req.headers['authorization'];
-    //console.log(req);
-    //console.log("Token: " + token);
 
     if (!token) {
         res.status(401).send("No Token!");

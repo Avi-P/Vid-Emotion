@@ -1,4 +1,4 @@
-const token_id = "app_token";
+const token_id = "app_token";   //Name of item in local storage
 
 /* Class that contains methods to interact with token in localstorage */
 class AuthenticationHelper {
@@ -19,6 +19,11 @@ class AuthenticationHelper {
     removeToken = () => {
         localStorage.removeItem(token_id);
         window.location.reload();
+    }
+
+    /* Removes token from local storage without forcing a reload */
+    removeTokenNoReload = () => {
+        localStorage.removeItem(token_id);
     }
 }
 

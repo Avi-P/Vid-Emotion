@@ -19,9 +19,7 @@ function Home() {
                     video we will analyze the pictures for facial expressions and come up with a rating on your emotions
                     toward the video and the category of the video.
                 </p>
-
             </Jumbotron>
-
 
             <center>
                 <h2 className = "works"> How It Works </h2>
@@ -69,10 +67,7 @@ function Home() {
                     </CardDeck>
                 </div>
             </center>
-
-
     </>;
 }
-
 
 export default Home;
