@@ -10,6 +10,7 @@ import Dropdown from 'react-bootstrap/Dropdown'
 
 import LoginPage from "./LoginPage"
 import RegisterPage from "./RegisterPage";
+import SettingsPage from "./SettingsPage"
 
 import AuthenticationHelper from "./AuthenticationHelper"
 
@@ -22,17 +23,19 @@ class NavigationBar extends React.Component {
 
         this.handleClick = this.handleClick.bind(this);
         this.handleClose = this.handleClose.bind(this);
-        this.removeToken = this.removeToken.bind(this);
+        this.showSetting = this.showSetting.bind(this);
 
         this.state = {
-            show: false
+            show: false,
+            settingShow: false
         }
     }
 
     /* Handles close of the login/register modal */
     handleClose() {
         this.setState({
-            show: false
+            show: false,
+            settingShow: false
         })
     }
 
@@ -40,6 +43,12 @@ class NavigationBar extends React.Component {
     handleClick() {
         this.setState({
             show: true
+        })
+    }
+
+    showSetting() {
+        this.setState({
+            settingShow: true
         })
     }
 
@@ -53,6 +62,7 @@ class NavigationBar extends React.Component {
 
                 <Dropdown.Menu>
                     <Dropdown.Item onClick = {this.removeToken}>Log Out</Dropdown.Item>
+                    <Dropdown.Item onClick = {this.showSetting}>Settings</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>);
         }
@@ -91,6 +101,14 @@ class NavigationBar extends React.Component {
                         </Tab>
                         <Tab eventKey = "register" title = "Register">
                             <RegisterPage />
+                        </Tab>
+                    </Tabs>
+                </Modal>
+
+                <Modal size = "lg" show = {this.state.settingShow} onHide = {this.handleClose}>
+                    <Tabs defaultActiveKey = "Change Password">
+                        <Tab eventKey = "Change Password" title = "Change Password">
+                            <SettingsPage />
                         </Tab>
                     </Tabs>
                 </Modal>

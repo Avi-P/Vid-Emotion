@@ -3,51 +3,44 @@ import React from "react";
 import InputGroup from "react-bootstrap/InputGroup"
 import FormControl from "react-bootstrap/FormControl"
 import Button from "react-bootstrap/Button"
+import AuthenticationHelper from "./AuthenticationHelper";
 
-import "./RegisterPage.css"
+import "./SettingsPage.css"
 
-class RegisterPage extends React.Component {
+class SettingsPage extends React.Component {
 
-    /* Constructor/props/state */
     constructor(props) {
         super(props);
 
-        this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
-        this.register = this.register.bind(this);
+        this.handleOldPasswordChange = this.handleOldPasswordChange.bind(this);
+        this.change = this.change.bind(this);
 
         this.state = {
-            Login: "",
+            OldPassword: "",
             Password: "",
             ConfirmPassword: "",
             PasswordGood: false
         }
     }
 
-    /* Updates state username variable as username changes */
-    handleUsernameChange(event) {
+    handleOldPasswordChange(event) {
         this.setState({
-            Login: event.target.value,
-            Password: this.state.Password,
-            ConfirmPassword: this.state.ConfirmPassword
+            OldPassword: event.target.value,
         })
     }
 
     /* Updates state password variable as username changes */
     handlePasswordChange(event) {
         this.setState({
-            Login: this.state.Login,
             Password: event.target.value,
-            ConfirmPassword: this.state.ConfirmPassword
         })
     }
 
     /* Updates state confirm password variable as username changes */
     handleConfirmPasswordChange(event) {
         this.setState({
-            Login: this.state.Login,
-            Password: this.state.Password,
             ConfirmPassword: event.target.value
         }, () => {
             if (this.checkPassword() === "✓" && String(this.state.Password) === String(this.state.ConfirmPassword)) {
@@ -94,37 +87,15 @@ class RegisterPage extends React.Component {
         }
     }
 
-    /* Logic for whether register button should show. Depends on password matching and security requirement */
-    showButton() {
-        if (this.state.PasswordGood === true) {
-            return (
-                <div className="loginButton">
-                    <Button variant="primary" size="md" block onClick={this.register}>
-                        Register
-                    </Button>
-                </div>
-            )
-        }
-        else {
-            return (
-                <div className="loginButton">
-                    <Button variant="primary" size="md" block disabled>
-                        Register
-                    </Button>
-                </div>
-            )
-        }
-    }
-
     /* Performs HTTP Request to do registration in the mongodb */
-    register() {
+    change() {
         let that = this;
 
-        const url = "http://localhost:8080/api/register";
+        const url = "http://localhost:8080/api/changePassword";
 
         const data = {
-            "username": this.state.Login,
-            "password": this.state.Password
+            "oldPassword": that.state.OldPassword,
+            "newPassword": that.state.Password
         };
 
         fetch(url, {
@@ -132,7 +103,8 @@ class RegisterPage extends React.Component {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
-                "content-type" : "application/json"
+                "content-type" : "application/json",
+                'Authorization': "Bearer " + AuthenticationHelper.getToken(),
             }
         }).then(function(response) {
 
@@ -142,16 +114,16 @@ class RegisterPage extends React.Component {
                     resultText: "Error Registering"
                 });
             }
-            else if (response.status == 401) {
+            else if (response.status === 401) {
                 that.setState({
                     showResult: true,
-                    resultText: "Error Registering"
+                    resultText: "Wrong Password"
                 });
             }
             else {
                 that.setState({
                     showResult: true,
-                    resultText: "Registration Successful"
+                    resultText: "Password Change Successful"
                 });
             }
 
@@ -159,20 +131,41 @@ class RegisterPage extends React.Component {
         })
     }
 
-    /* Contains code/logic for what is shown on the browser */
+    /* Logic for whether register button should show. Depends on password matching and security requirement */
+    showButton() {
+        if (this.state.PasswordGood === true) {
+            return (
+                <div className="loginButton">
+                    <Button variant="primary" size="md" block onClick={this.change}>
+                        Change Password
+                    </Button>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div className="loginButton">
+                    <Button variant="primary" size="md" block disabled>
+                        Change Password
+                    </Button>
+                </div>
+            )
+        }
+    }
+
     render() {
         return (
             <>
                 <InputGroup className="formInput">
                     <InputGroup.Prepend>
-                        <InputGroup.Text id="login"> Username </InputGroup.Text>
+                        <InputGroup.Text id="change"> Old Password </InputGroup.Text>
                     </InputGroup.Prepend>
-                    <FormControl placeholder = "Username" onChange = {this.handleUsernameChange}/>
+                    <FormControl placeholder = "Password" onChange = {this.handleOldPasswordChange}/>
                 </InputGroup>
 
                 <InputGroup className="formInput">
                     <InputGroup.Prepend>
-                        <InputGroup.Text id="login"> Password </InputGroup.Text>
+                        <InputGroup.Text id="change"> New Password </InputGroup.Text>
                     </InputGroup.Prepend>
                     <FormControl placeholder = "Password" onChange = {this.handlePasswordChange}/>
                     <InputGroup.Append>
@@ -182,7 +175,7 @@ class RegisterPage extends React.Component {
 
                 <InputGroup className="formInput">
                     <InputGroup.Prepend>
-                        <InputGroup.Text> Confirm Password </InputGroup.Text>
+                        <InputGroup.Text id="change"> Confirm New Password </InputGroup.Text>
                     </InputGroup.Prepend>
                     <FormControl placeholder = "Confirm Password" onChange = {this.handleConfirmPasswordChange}/>
                     {this.checkConfirmPassword()}
@@ -197,4 +190,4 @@ class RegisterPage extends React.Component {
     }
 }
 
-export default RegisterPage
+export default SettingsPage

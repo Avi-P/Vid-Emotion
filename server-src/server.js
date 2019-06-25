@@ -71,6 +71,64 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.post('/api/changePassword', authMiddleware, async function(req, res) {
+    const {oldPassword, newPassword} = req.body;
+
+    let username = req.username;
+
+    Users.findOne({username}, function(err, user) {
+        if (err) {
+            console.log("Change: Internal Error");
+            res.status(500).json({
+                error: "Internal Error."
+            });
+        }
+        else if (!user) {
+            console.log("Change: Incorrect Username");
+            res.status(401).json({
+                error: "Incorrect Username and/or password."
+            })
+        }
+        else {
+            user.isCorrectPassword(oldPassword, function(err, same) {
+
+                if (err) {
+                    console.log("Change: Internal Error");
+                    res.status(500).json({
+                        error: "Internal Error."
+                    });
+                }
+                else if (!same) {
+                    console.log("Change: Incorrect password for " + username);
+                    res.status(401).json({
+                        error: "Incorrect email and/or password."
+                    })
+                }
+                else {
+                    /* Deleting user from table then in callback adding with new password */
+                    Users.deleteOne({ _id: user._id }, function() {
+                        const UpdatedUser = new Users({username: username, password: newPassword});
+
+                        UpdatedUser.save(function(err) {
+                            if (err) {
+                                console.log(err);
+                                console.log("Change: Error Changing Password!");
+                                res.status(500).send("Error Changing Password!");
+                            }
+                            else {
+                                console.log("Change: Saved new password for " + username);
+                                res.status(200).send("Saved new Password!");
+                            }
+                        });
+
+                        res.status(200);
+                    });
+                }
+            })
+        }
+    });
+});
+
 /* Register method which saves data into mongodb */
 app.post('/api/register', function(req, res) {
     const {username, password} = req.body;
@@ -83,7 +141,7 @@ app.post('/api/register', function(req, res) {
             res.status(500).send("Error registering!");
         }
         else {
-            console.log("Registration: User registered.");
+            console.log("Registration: " + username + "  registered.");
             res.status(200).send("User registered!");
         }
     });
@@ -101,9 +159,9 @@ app.post("/api/login", function(req, res) {
             });
         }
         else if (!user) {
-            console.log("Login: Incorrect email");
+            console.log("Login: Incorrect Username");
             res.status(401).json({
-                error: "Incorrect email and/or password."
+                error: "Incorrect Username and/or password."
             })
         }
         else {
@@ -115,9 +173,9 @@ app.post("/api/login", function(req, res) {
                     });
                 }
                 else if (!same) {
-                    console.log("Login: Incorrect password");
+                    console.log("Login: Incorrect password for " + username);
                     res.status(401).json({
-                        error: "Incorrect email and/or password."
+                        error: "Incorrect Username and/or password."
                     })
                 }
                 else {
@@ -135,18 +193,12 @@ app.post("/api/login", function(req, res) {
             })
         }
     });
-})
+});
 
 /* Method to check if a token is valid */
 app.get("/api/checkToken", authMiddleware, function (req, res) {
     //console.log(req.username);
     res.status(200).send("Token thingie works");
-});
-
-/* Test api */
-app.get('/api/secret', authMiddleware, function(req, res) {
-    //console.log("Secret!");
-    res.send('Token authentication works');
 });
 
 /* API to save emotion data in to db */
@@ -181,8 +233,6 @@ app.post('/api/emotion', authMiddleware, async function(req, res) {
 
     VideoUser.save();
 
-    //console.log(JSON.stringify(VideoUser));
-
     res.send('Submitted');
 
     return;
@@ -199,10 +249,7 @@ app.get('/api/emotion/summary', authMiddleware, async  function(req, res) {
                                     }
     ], function(err, result) {
         res.send(result);
-        //console.log(JSON.stringify(result));
     });
-    //console.log(JSON.stringify(query));
-
 });
 
 /* API to get all data entered for a user from db */
@@ -211,10 +258,7 @@ app.get('/api/emotion/history', authMiddleware, async  function(req, res) {
         { $match: { username: req.username} }
     ], function(err, result) {
         res.send(result);
-        //console.log(JSON.stringify(result));
     });
-    //console.log(JSON.stringify(query));
-
 });
 
 /* Servers listens on port 8080 */

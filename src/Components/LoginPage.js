@@ -68,13 +68,13 @@ class LoginPage extends React.Component {
                 if (res.status === 401) {
                     that.setState({
                         showResult: true,
-                        resultText: "Incorrect Email/Password"
+                        resultText: "Incorrect Username/Password"
                     });
                 }
                 else if (res.status === 500) {
                     that.setState({
                         showResult: true,
-                        resultText: "Internal Error"
+                        resultText: "Internal Error."
                     });
                 }
 
@@ -142,13 +142,6 @@ class LoginPage extends React.Component {
                         Login
                     </Button>
                 </div>
-
-                {/*<div className="loginButton">*/}
-                    {/*<Button variant="primary" size="md" block onClick = {this.test}>*/}
-                        {/*Test*/}
-                    {/*</Button>*/}
-                {/*</div>*/}
-
 
                 {this.state.showResult && <h3 className="resultText"> {this.state.resultText} </h3>}
             </>
