@@ -60,7 +60,7 @@ categoryID[44] = "Trailers";
 
 
 /* Connects to mongodb */
-mongoose.connect(mongo_url, function(err) {
+mongoose.connect(mongo_url, { useNewUrlParser: true }, function(err) {
     if (err) {
         throw err;
     }
