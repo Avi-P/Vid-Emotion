@@ -45,3 +45,6 @@ Run the command `npm start`
 
 Go to `localhost:3000` in your browser, preferably Chrome, and you should see the front-end
 
+## License
+[GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
+
