@@ -221,7 +221,7 @@ app.post('/api/emotion', authMiddleware, async function(req, res) {
 
     const fetch = require('node-fetch');
 
-    const YouTubeAPIKey = "AIzaSyAcZQ3cGxRxLPwEIPGfpr_jfbkoB06kxig"; //Should be in ENV variables */
+    const YouTubeAPIKey = ""; //API Key Disabled
 
     let url = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id="
                 + req.body.videoID
@@ -268,6 +268,7 @@ app.get('/api/emotion/summary', authMiddleware, async  function(req, res) {
                                               }
                                     }
     ], function(err, result) {
+        console.log(result);
         res.send(result);
     });
 });
